@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--sección -->
+    <div></div>
+    <div> <!-- Acá va el titulo -->
+        <h1>Creación de Registro</h1>
+        <!-- Acá va el parrafo -->
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+            nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+
+    <!--sección -->
+   <div></div>
+    <!-- Acá va el Segundo titulo -->
+    <h2>Formulario de Registro</h2>
+        <!--Subsección -->
+        <div>
+            <form>
+                
+                <!-- Ubicacion Geografica fieldset -->
+                <fieldset> 
+                    <label for="cdepart">codigo departamento</label><br>
+                    <input type="text" id="cdepart" name="cdepartamento" placeholder="45678"><br>
+
+                    <label for="depart">Departamento</label><br>
+                    <input type="text" id="depart" name="departamento"placeholder="Cundinamarca"><br>
+
+                    <label for="cmuni">codigo municipio</label><br>
+                    <input type="text" id="cmuni" name="cmunicipio" placeholder="21"><br>
+
+                    <label for="muni">Municipio</label><br>
+                    <input type="text" id="muni" name="municipio" placeholder="Soacha"><br>
+                    
+                    <label for="fnotif">fecha de notificacion</label><br>
+                    <input type="date" id="fnotif" name="fnotificacion" placeholder="DD/MM/AAAA"><br>
+
+                    <label for="codiso">codigo ISO pais</label><br>
+                    <input type="text" id="codiso" name="codiso" placeholder="57"><br>
+
+                    <label for="pais">Pais</label><br>
+                    <input type="text" id="pais" name="pais" placeholder="Colombia"><br>
+                </fieldset>
+
+                <!-- Registro contagio fieldset -->
+                <fieldset> 
+                
+                <label for="freporte">fecha de reporte web</label><br>
+                <input type="date" id="freporte" name="freporte" placeholder="DD/MM/AAAA"><br>
+
+                <label for="initsint">Inicio de Sintomas</label><br>
+                <input type="date" id="initsint" name="initsintomas" placeholder="DD/MM/AAAA"><br>
+
+                <label for="fdiag">Fecha de Diagnostico</label><br>
+                <input type="date" id="fdiag" name="lname" placeholder="DD/MM/AAAA"><br>
+
+                <label for="frecup">Fecha de Recuperacion</label><br>
+                <input type="date" id="frecup" name="frecuperacion" placeholder="DD/MM/AAAA"><br>
+
+                <label for="trecup">Tipo de Recuperacion</label><br>
+                    <!-- select dropdown Tipo Recuperacion-->
+                    <select id="medad" name="medad">
+                        <option value="dias">Tiempo</option>
+                        <option value="meses">PCR</option>
+                        <option value="anos">No Especificado</option>
+                    </select> 
+                    <br>
+                 
+                <label for="edad">Sexo</label><br>
+                    <!-- select dropdown sexo-->
+                    <select id="sexo" name="sexo"> <br>
+                        <option value="femenino">Femenino</option>
+                        <option value="masculino">Masculino</option>
+                    </select> 
+                    <br>
+
+                <!-- campo edad -->
+                <label for="edad">Edad</label><br>
+                <input type="text" id="edad" name="edad" placeholder="45"><br>
+                    <!-- select dropdown medida edad-->
+                    <select id="medad" name="medad">
+                        <option value="dias">Dias</option>
+                        <option value="meses">Meses</option>
+                        <option value="anos">Años</option>
+                    </select> 
+                    <br>
+                <label for="petnica">Pertenencia Etnica</label><br>
+
+                    <!-- select dropdown Pertenencia etnica-->
+                    <select id="medad" name="medad">
+                        <option value="dias">Indigena</option>
+                        <option value="meses">ROM</option>
+                        <option value="meses">Raizal</option>
+                        <option value="meses">Palenquero</option>
+                        <option value="meses">Negro</option>
+                        <option value="meses">Otro</option>
+                        <option value="anos">3</option>
+                    </select> 
+                    <br>
+
+                <label for="grpetnico">Nombre del Grupo Etnico</label><br>
+                <input type="text" id="grpetnico" name="grpetnico" placeholder="wayuu"><br>      
+                
+                </fieldset>
+
+                <!-- **** Seguimiento de cambios fieldset **** -->
+                <fieldset>
+
+                <label for="ubicaso"> Ubicación del caso</label><br>
+                    <!-- select dropdown Ubicacion actual caso -->
+                    <select id="ubicaso" name="ubicaso">
+                        <option value="casa">Casa</option>
+                        <option value="fallecido">Fallecido</option>
+                        <option value="hospital">Hospital</option>
+                        <option value="uci">UCI</option>
+                        <option value="uci">N/A</option>
+                    </select> 
+                    <br>
+                <label for="estado"> Estado del paciente</label><br>
+                    <!-- select dropdown Estado Enfermedad-->
+                    <select id="medad" name="medad">
+                        <option value="dias">Leve</option>
+                        <option value="meses">Fallecido</option>
+                        <option value="anos">Moderado</option>
+                        <option value="anos">Grave</option>
+                    </select> 
+                    <br>
+                <label for="tcontag">Tipo de contagio</label><br>
+                    <!-- select dropdown Tipo Contagio-->
+                    <select id="medad" name="medad">
+                        <option value="dias">Relacionado</option>
+                        <option value="meses">Importado</option>
+                        <option value="anos">En estudio</option>
+                        <option value="anos">Comunitario</option>
+                    </select> 
+                    <br>
+                <label for="erecup">Estado de Recuperacion</label><br>
+                    <!-- select dropdown Estado Recuperado-->
+                    <select id="medad" name="medad">
+                        <option value="dias">Recuperado</option>
+                        <option value="meses">Fallecido</option>
+                        <option value="anos">Activo</option>
+                        <option value="anos">N/A</option>
+                    </select> 
+                    <br>
+                <label for="fmuerte">Fecha de Muerte</label><br>
+                <input type="date" id="fmuerte" name="fmuerte" placeholder="DD/MM/AAAA"><br>
+
+                </fieldset>  
+              </form>
+        </div>
+
+        <!-- Div botones submit-->
+        <div>
+            <fieldset>
+                <button> Agregar Regsitro </button>
+            </fieldset>
+        </div>
+
+</body>
+</html>

@@ -82,33 +82,21 @@
         </select>
 
         <label>Nombre grupo étnico</label>
-
-        <select class="form_creacion-input" v-model="registro.grupo_etnico">
-          <option select disabled></option>
-          <option value="17 de Junio">17 de Junio</option>
-          <option value="Acevedo y Gomez">Acevedo y Gomez</option>
-          <option value="Achagua">Achagua</option>
-          <option value="Achiote">Achiote</option>
-          <option value="Agua Negra">Agua Negra</option>
-          <option value="Aguas Vivas">Aguas Vivas</option>
-          <option value="Aico">Aico</option>
-          <option value="Aima">Aima</option>
-          <option value="Alpiolar">Alpiolar</option>
-          <option value="Aldea de Maria">Aldea de Maria</option>
-          <option value="Indigena">Indigena</option>
-          <option value="Negro">Negro</option>
-          <option value="Palenquero">Palenquero</option>
-          <option value="Raizal">Raizal</option>
-          <option value="ROM">ROM</option>
-          <option value="Otro">Otro</option>
-        </select>
+        <input 
+          class="form_creacion-input"
+          type="text"
+          placeholder="Ingrese el nombre del grupo étnico" v-model="registro.grupo_etnico"/>
 
         <label>Pertenencia étnica</label>
-        <input
-          class="form_creacion-input"
-          type="number"
-          v-model="registro.pertenencia_etnica"
-        />
+        <select class="form_creacion-input" v-model="registro.pertenencia_etnica">
+          <option select disabled></option>
+          <option :key="1" :value="1">Indigena</option>
+          <option :key="2" :value="2">ROM</option>
+          <option :key="3" :value="3">Raizal</option>
+          <option :key="4" :value="4">Palenquero</option>
+          <option :key="5" :value="5">Negro</option>
+          <option :key="6" :value="6">Otro</option>
+        </select>
 
         <label for="frecup">Fecha de recuperación</label>
         <input

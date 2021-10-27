@@ -33,9 +33,10 @@ export default {
       this.$router.push({ name: "Instrucciones" });
     },
     completedCrearRegistro: function() {
-      alert("Creación de Registro Exitosa ");
+      alert("Creación de registro exitosa ");
       this.$router.push({ name: "CrearSeguimiento" });
     },
+    
   },
 
   created: function() {

@@ -19,7 +19,7 @@
         v-on:submit.prevent="procesarCreacionSeguimiento"
       >
         <!-- select dropdown Ubicacion actual caso -->
-
+        <!--
         <label for="crearsegumiento">Se creo el siguiente registro</label>
         <select class="form_creacion-input" v-model="seguimiento.id_caso_fk">
           <option
@@ -28,7 +28,9 @@
             :value="ultimo.id_caso"
             >{{ ultimo.id_caso }}</option
           >
+          <option :key="20" :value="20">20_</option>
         </select>
+        -->
         <label for="crearsegumiento">Ubicacion del seguimiento</label>
         <select
           class="form_creacion-input"
@@ -108,9 +110,9 @@ export default {
       console.log(this.seguimiento);
       axios
         .post(
-          "https://p46-g2-be.herokuapp.com/CrearSeguimiento/",
+          "https://p46-g2-be-final.herokuapp.com/CrearSeguimiento/",
           this.seguimiento,
-          { headers: {} }
+          {headers:{}}
         )
         .then((result) => {
           this.$emit("completedCrearSeguimiento"); //nos puede servir después
@@ -125,8 +127,8 @@ export default {
       axios
         .get("https://p46-g2-be-ultima.herokuapp.com/UltimoRegistro/")
         .then((result) => {
-          this.seguimiento = result.data;
-          console.log(result.data);
+          console.log(result.data[0].id_caso);
+          this.seguimiento.id_caso_fk = result.data[0].id_caso;
         })
         .catch((error) => {
           //usar???

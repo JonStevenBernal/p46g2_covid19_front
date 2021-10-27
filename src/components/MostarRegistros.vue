@@ -68,7 +68,7 @@
         <tbody>
           <!-- sección FILAS -->
 
-          <tr v-for="register in registers" :key="register.id">
+          <tr v-for="register in registros" :key="register.id">
             <!--Fila 1, datos registro -->
             <td>{{ register.id_caso }}</td>
             <!-- <td>{{register.codigo_divipola_municipio_fk}}</td> -->
@@ -91,16 +91,16 @@
             <!--<td>{{register.codigo_iso_pais}}</td>
                         <td>{{register.nombre_pais}}</td>
                         <td>{{register.codigo_divipola_departamento}}</td> -->
-            <td>{{ register.nombre_departamento }}</td>
-            <td>{{ register.nombre_municipio }}</td>
+            <td>{{ register.ubicacion.nombre_departamento }}</td>
+            <td>{{ register.ubicacion.nombre_municipio }}</td>
 
             <!--Fila 1, datos Seguimiento -->
             <!-- <td>{{register.id_evolucion}}</td> -->
-            <td>{{ register.ubicacion_caso }}</td>
-            <td>{{ register.estado }}</td>
-            <td>{{ register.tipo_contagio }}</td>
-            <td>{{ register.recuperado }}</td>
-            <td>{{ register.fecha_muerte }}</td>
+            <td>{{ register.seguimiento.ubicacion_caso }}</td>
+            <td>{{ register.seguimiento.estado }}</td>
+            <td>{{ register.seguimiento.tipo_contagio }}</td>
+            <td>{{ register.seguimiento.recuperado }}</td>
+            <td>{{ register.seguimiento.fecha_muerte }}</td>
           </tr>
         </tbody>
       </table>
@@ -109,9 +109,14 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
+  name: "MostrarRegistros",
+  
   data() {
     return {
+      registros: [],
+      /*
       registers: [
         {
           id_caso: 1,
@@ -163,7 +168,27 @@ export default {
           fecha_muerte: null,
         },
       ],
+      */
     };
+  },
+  
+  methods:{
+    procesarMostrarRegistros: function(){
+      axios.get(
+        "https://p46-g2-be-ultima.herokuapp.com/MostrarRegistros/"
+      )
+      .then((result)=> {
+        this.registros = result.data;
+        
+        alert("Visualización de registros exitosa ");
+      })
+      .catch((error)=>{
+        alert("Error al mostrar registros");
+      });
+    }
+  }, 
+  created: function() {
+    this.procesarMostrarRegistros();
   },
 };
 </script>

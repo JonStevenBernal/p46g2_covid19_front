@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!--sección -->
+    <div></div>
+    <div> <!-- Acá va el titulo -->
+        <h1>Modificar Registro</h1>
+        <!-- Acá va el parrafo -->
+        <p>Esta modificando unicamente parael registro al que le hizo click.
+            <br>
+            Recuerde que solamente es posible modificar los siguientes campos:
+        </p>
+    </div>
+
+    <!--sección -->
+   <div>
+        <!-- **** Seguimiento de cambios fieldset **** -->
+                <fieldset>
+
+                <label for="ubicaso"> Ubicación del caso</label><br>
+                    <!-- select dropdown Ubicacion actual caso -->
+                    <select id="ubicaso" name="ubicaso">
+                        <option value="casa">Casa</option>
+                        <option value="fallecido">Fallecido</option>
+                        <option value="hospital">Hospital</option>
+                        <option value="uci">UCI</option>
+                        <option value="uci">N/A</option>
+                    </select> 
+                    <br>
+                <label for="estado"> Estado del paciente</label><br>
+                    <!-- select dropdown Estado Enfermedad-->
+                    <select id="medad" name="medad">
+                        <option value="dias">Leve</option>
+                        <option value="meses">Fallecido</option>
+                        <option value="anos">Moderado</option>
+                        <option value="anos">Grave</option>
+                    </select> 
+                    <br>
+                <label for="tcontag">Tipo de contagio</label><br>
+                    <!-- select dropdown Tipo Contagio-->
+                    <select id="medad" name="medad">
+                        <option value="dias">Relacionado</option>
+                        <option value="meses">Importado</option>
+                        <option value="anos">En estudio</option>
+                        <option value="anos">Comunitario</option>
+                    </select> 
+                    <br>
+                <label for="erecup">Estado de Recuperacion</label><br>
+                    <!-- select dropdown Estado Recuperado-->
+                    <select id="medad" name="medad">
+                        <option value="dias">Recuperado</option>
+                        <option value="meses">Fallecido</option>
+                        <option value="anos">Activo</option>
+                        <option value="anos">N/A</option>
+                    </select> 
+                    <br>
+                <label for="fmuerte">Fecha de Muerte</label><br>
+                <input type="date" id="fmuerte" name="fmuerte" placeholder="DD/MM/AAAA"><br>
+
+                </fieldset>  
+   </div>
+
+    <!-- Div botones submit-->
+        <div>
+            <fieldset>
+                <button> Modificar y Guardar </button>
+                <button> Cancelar</button>
+            </fieldset>
+        </div>
+</body>
+</html>

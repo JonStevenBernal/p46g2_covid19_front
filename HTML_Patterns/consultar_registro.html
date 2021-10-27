@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+     <!-- Div botones menu-->
+     <div>
+        <fieldset>
+            <button> Home </button> 
+            <button> Crear Registro</button>
+            <button> Modificar Registro</button>
+            
+        </fieldset>
+    </div>
+
+    
+    <div> <!-- Acá va el titulo -->
+        <h1>Consultar Registro</h1>
+        <!-- Acá va el parrafo -->
+        <p>Esta visualizando todos los registros de contagios.
+            <br>
+            Recuerde que para modificar un registro debe seleccionarlo.
+            <br>
+            Puede filtrar los registros por Municipio, sexo o edad.
+        </p>
+    </div>
+
+    <!--sección Filtros -->
+    <div>
+        <label for="filtrar">Filtrar por:</label><br>
+                    <!-- select dropdown Estado Recuperado-->
+                    <select id="filtar" name="filtrar">
+                        <option value="municipio">Municipio</option>
+                        <option value="sexo">Sexo</option>
+                        <option value="estado">Estado</option>
+                    </select> 
+    </div>
+
+</body>
+</html>
