@@ -1,126 +1,73 @@
 <template>
-  <div class="titulo">
-    <h2>Crear un Registro</h2>
-  </div>
-
-  <div class="parrafo">
-    Está creando un registro para la ubicacion seleccionada en la ventana
-    anterior, por favor complete el siguiente formulario:
-  </div>
-  <br />
-
-  <form v-on:submit.prevent="procesarCrearRegistro">
-    <label for="Id"></label>
-    <div class="field">
-      <label for="idcaso">Id del caso</label><br />
-      <input
-        type="text"
-        id="idcaso"
-        name="iddelcaso"
-        placeholder="1"
-        v-model="registro.id_caso"
-      /><br />
-      <br />
+  <section>
+    <div class="register_">
+      <h2>Crear un Registro</h2>
     </div>
 
-    <div class="field">
-      <label for="cmuni">Código divipola municipio</label><br />
-      <input
-        type="text"
-        id="cmuni"
-        name="cmunicipio"
-        placeholder="11"
-        v-model="registro.codigo_divipola_municipio_fk"
-      /><br />
-      <br />
+    <div class="parrafo">
+      Para crear registro por favor ingrese los siguientes datos
     </div>
 
-    <div class="field">
-      <label for="fnotif">Fecha de notificación</label><br />
+    <form v-on:submit.prevent="procesarCrearRegistro">
+      <label for="crearsegumiento">Selecciona la Ubicacion</label>
+      <select v-model="registro.codigo_divipola_municipio_fk">
+        <option
+          v-for="ubicacion in ubicaciones"
+          :key="ubicacion.codigoDivipolaMunicipio"
+          :value="ubicacion.codigoDivipolaMunicipio"
+          >{{ ubicacion.nombre_municipio }}</option
+        >
+      </select>
+
+      <label>Selecciona Fecha de Notificacion</label>
       <input
         type="date"
-        id="fnotif"
-        name="fnotificacion"
         placeholder="DD/MM/AAAA"
         v-model="registro.fecha_notificacion"
-      /><br />
-      <br />
-    </div>
+      />
 
-    <div class="field">
-      <label for="freporte">Fecha de reporte web</label><br />
+      <label>Fecha de reporte</label>
       <input
         type="date"
-        id="freporte"
-        name="freporte"
         placeholder="DD/MM/AAAA"
         v-model="registro.fecha_reporte"
-      /><br />
-      <br />
-    </div>
+      />
 
-    <div class="field">
-      <label for="initsint">Fecha inicio de síntomas</label><br />
+      <label>Fecha inicio de síntomas</label>
       <input
         type="date"
-        id="initsint"
-        name="initsintomas"
         placeholder="DD/MM/AAAA"
         v-model="registro.fecha_sintomas"
       />
-    </div>
 
-    <div class="field">
-      <label for="fdiag">Fecha de diagnóstico del laboratorio</label><br />
+      <label>Fecha de diagnóstico del laboratorio</label>
       <input
         type="date"
-        id="fdiag"
-        name="lname"
         placeholder="DD/MM/AAAA"
         v-model="registro.fecha_diagnostico_lab"
-      /><br />
-      <br />
-    </div>
+      />
 
-    <div class="field">
-      <label for="edad">Edad</label><br />
-      <input
-        type="text"
-        id="edad"
-        name="edad"
-        placeholder="1"
-        v-model="registro.Edad"
-      /><br />
-      <br />
-    </div>
+      <label>Edad</label>
+      <input type="number" placeholder="Ingrese edad" v-model="registro.edad" />
 
-    <div class="field">
-      <label for="medad">Unidad de medida</label><br />
+      <label>Unidad de medida</label>
       <select v-model="registro.unidad_de_medida_edad">
-        <option select disabled></option>
-        <option value="dias">Dias</option>
-        <option value="meses">Meses</option>
-        <option value="anos">Años</option>
+        <option :key="3" :value="3">Dias</option>
+        <option :key="2" :value="2">Meses</option>
+        <option :key="1" :value="1">Años</option>
       </select>
-      <br />
-    </div>
 
-    <div class="field">
-      <label for="sexo">Sexo</label><br />
+      <label for="sexo">Sexo</label>
 
       <select v-model="registro.sexo">
         <option select disabled></option>
-        <option value="femenino">Femenino</option>
-        <option value="masculino">Masculino</option>
-        <option value="otro">Otro</option>
+        <option value="F">Femenino</option>
+        <option value="M">Masculino</option>
       </select>
-      <br />
-    </div>
 
-    <div class="field">
-      <label for="grpetnico">Nombre grupo étnico</label><br />
+      <label>Nombre grupo étnico</label>
 
-      <select v-model="registro.Nombre_grupo_etnico">
+      <select v-model="registro.grupo_etnico">
         <option select disabled></option>
         <option value="17 de Junio">17 de Junio</option>
         <option value="Acevedo y Gomez">Acevedo y Gomez</option>
@@ -139,39 +86,27 @@
         <option value="ROM">ROM</option>
         <option value="Otro">Otro</option>
       </select>
-      <br />
-    </div>
 
-    <div class="field">
-      <label for="petnica">Pertenencia étnica</label><br />
+      <label>Pertenencia étnica</label>
+      <input type="number" v-model="registro.pertenencia_etnica" />
+
+      <label for="frecup">Fecha de recuperación</label>
       <input
-        type="text"
-        id="petnicao"
-        name="petnica"
-        placeholder="1"
-        v-model="registro.pertenencia_etnica"
-      /><br />
-      <br />
-    </div>
+        type="date"
+        placeholder="DD/MM/AAAA"
+        v-model="registro.fecha_recuperacion"
+      />
 
-    <label for="frecup">Fecha de recuperación</label><br />
-    <input
-      type="date"
-      id="frecup"
-      name="frecuperacion"
-      placeholder="DD/MM/AAAA"
-      v-model="registro.fecha_recuperacion"
-    />
-    <label for="trecup">Tipo de recuperación</label><br />
-    <select v-model="registro.tipo_recuperacion">
-      <option select disabled></option>
-      <option value="dias">Tiempo</option>
-      <option value="meses">PCR</option>
-      <option value="otro">Fallecido</option>
-      <option value="anos">No Especificado</option>
-    </select>
-    <button>Siguiente</button>
-  </form>
+      <label>Tipo de recuperación</label>
+      <select v-model="registro.tipo_recuperacion">
+        <option value="Tiempo">Tiempo</option>
+        <option value="PCR">PCR</option>
+        <option value="Fallecido">Fallecido</option>
+        <option value="No especificado">No Especificado</option>
+      </select>
+      <button type="submit">Crear Registro</button>
+    </form>
+  </section>
 </template>
 
 <script>
@@ -181,7 +116,6 @@ export default {
   data: function() {
     return {
       registro: {
-        id_caso: 0,
         codigo_divipola_municipio_fk: 0,
         fecha_notificacion: null,
         fecha_reporte: null,
@@ -195,24 +129,43 @@ export default {
         fecha_recuperacion: null,
         tipo_recuperacion: "",
       },
+      ubicaciones: [],
     };
   },
 
   methods: {
     procesarCrearRegistro: function() {
+      console.log(this.registro);
       axios
         .post("https://p46-g2-be.herokuapp.com/CrearRegistro/", this.registro, {
           headers: {},
         })
         .then((result) => {
+          console.log("then");
           this.$emit("completedCrearRegistro");
         })
         .catch((error) => {
           //usar???
           //    if(error.response.status == "401")
+          console.log("Catch");
           alert("Error en la creación");
         });
     },
+    listarUbicaciones: function() {
+      axios
+        .get("https://p46-g2-be-final.herokuapp.com/ConsultarTodasUbicaciones/")
+        .then((result) => {
+          this.ubicaciones = result.data;
+        })
+        .catch((error) => {
+          //usar???
+          //    if(error.response.status == "401")
+          alert("Error en Ubicaciones");
+        });
+    },
+  },
+  created: function() {
+    this.listarUbicaciones();
   },
 };
 </script>

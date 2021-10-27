@@ -92,16 +92,6 @@ export default {
     loadCrearSeguimiento: function() {
       this.$router.push({ name: "CrearSeguimiento" });
     },
-
-    completedModificarSeguimiento: function() {
-      alert("Modificación de seguimiento exitosa");
-      this.$router.push({ name: "Instrucciones" });
-    },
-
-    completedCrearSeguimiento: function() {
-      alert("Creación de seguimiento exitosa");
-      this.$router.push({ name: "Instrucciones" });
-    },
   },
 };
 </script>

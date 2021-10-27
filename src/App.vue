@@ -4,7 +4,7 @@
     <router-view
       v-on:completedModificarSeguimiento="completedModificarSeguimiento"
       v-on:completedCrearSeguimiento="completedCrearSeguimiento"
-      v-on:completedCreaRegistro="completedCreaRegistro"
+      v-on:completedCrearRegistro="completedCrearRegistro"
     >
     </router-view>
   </main>
@@ -23,51 +23,17 @@ export default {
 
   methods: {
     //funciones js que voy a utilizar dentro del componente
+    completedModificarSeguimiento: function() {
+      alert("Modificación de seguimiento exitosa");
+      this.$router.push({ name: "Instrucciones" });
+    },
 
-    // loadInicio: function() {
-    //   this.$router.push({ name: "Instrucciones" });
-    // },
-
-    // loadMostrar: function() {
-    //   this.$router.push({ name: "MostrarRegistros" });
-    // },
-
-    // loadCrearRegistro: function() {
-    //   this.$router.push({ name: "CrearRegistro" });
-    // },
-
-    // loadFiltrarSexo: function() {
-    //   this.$router.push({ name: "FiltrarSexo" });
-    // },
-
-    // loadFiltrarMunicipio: function() {
-    //   this.$router.push({ name: "FiltrarMunicipio" });
-    // },
-
-    // loadFiltrarEstado: function() {
-    //   this.$router.push({ name: "FiltrarEstado" });
-    // },
-
-    // loadModificarSeguimiento: function() {
-    //   this.$router.push({ name: "ModificarSeguimiento" });
-    // },
-
-    // loadCrearSeguimiento: function() {
-    //   this.$router.push({ name: "CrearSeguimiento" });
-    // },
-
-    // completedModificarSeguimiento: function() {
-    //   alert("Modificación de seguimiento exitosa");
-    //   this.$router.push({ name: "Instrucciones" });
-    // },
-
-    // completedCrearSeguimiento: function() {
-    //   alert("Creación de seguimiento exitosa");
-    //   this.$router.push({ name: "Instrucciones" });
-    // },
-
+    completedCrearSeguimiento: function() {
+      alert("Creación de seguimiento exitosa");
+      this.$router.push({ name: "Instrucciones" });
+    },
     completedCrearRegistro: function() {
-      // alert("Creación de seguimiento exitosa");
+      alert("Creación de Registro Exitosa ");
       this.$router.push({ name: "CrearSeguimiento" });
     },
   },

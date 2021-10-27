@@ -20,7 +20,6 @@
         <li>Juan Sebastian Ayala Castaño</li>
         <li>Vannesa Martinez</li>
         <li>John Steven Bernal Gonzalez</li>
-        <li>Luis Guillermo Jimenez</li>
       </ul>
     </div>
     <div class="footer_logo">

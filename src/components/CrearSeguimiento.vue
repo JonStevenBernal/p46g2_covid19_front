@@ -101,16 +101,13 @@
 <script>
 //POST
 import axios from "axios";
-
-let pk_registro = 6;
-
 export default {
   name: "CrearSeguimiento",
 
   data: function() {
     return {
       seguimiento: {
-        id_caso_fk: pk_registro, //modificar (llamar de parte donde hice clic???)
+        id_caso_fk: 0, //modificar (llamar de parte donde hice clic???)
         ubicacion_caso: "",
         estado: "",
         tipo_contagio: "",
@@ -121,8 +118,21 @@ export default {
   },
 
   methods: {
+    getKeyRegistro: function() {
+      axios
+        .get("https://p46-g2-be-ultima.herokuapp.com/UltimoRegistro/")
+        .then((result) => {
+          this.id_caso_fk = result.data.id_caso;
+          console.log(result.data.id_caso);
+        })
+        .catch((error) => {
+          //usar???
+          //    if(error.response.status == "401")
+          alert("Error en el llamado");
+        });
+    },
     procesarCreacionSeguimiento: function() {
-      console.log();
+      console.log(this.seguimiento);
       axios
         .post(
           "https://p46-g2-be.herokuapp.com/CrearSeguimiento/",
@@ -138,6 +148,9 @@ export default {
           alert("Error en la creación");
         });
     },
+  },
+  created: function() {
+    this.getKeyRegistro();
   },
 };
 </script>
