@@ -1,30 +1,30 @@
 <template>
-  <div id="ModificarSeguimiento" class="ModificarSeguimiento">
-    <div class="titulo">
-      <h1>Modificar seguimiento de un registro</h1>
-      <!-- Acá va el titulo -->
+  <section class="creacion">
+    <section class="creacion_container">
+      <img src="../assets/icons8-virus-pur.svg" alt="logo coronactual" />
+
+      <h2>Modificar seguimiento de un registro</h2>
+
       <p>
         <!-- Acá va el parrafo -->
         Estás modificando unicamente el registro al que le hiciste click en la
-        ventana anterior.
-        <br />
-        Recuerda que sólamente es posible modificar los siguientes campos:
-        <br />
-        <br />
+        ventana anterior. Recuerda que sólamente es posible modificar los
+        siguientes campos:
         <i
           >Los campos marcados con <FONT COLOR="red">*</FONT> son
           obligatorios</i
         >
       </p>
-    </div>
-
-    <div class="formulario">
-      <form v-on:submit.prevent="procesarModificionSeguimiento">
+      <form
+        class="creacion_container-form"
+        v-on:submit.prevent="procesarModificionSeguimiento"
+      >
         <label for="ubicaso">
           Ubicación del caso<FONT COLOR="red">*</FONT>:</label
-        ><br />
+        >
         <!-- select dropdown Ubicacion actual caso -->
         <select
+          class="form_creacion-input"
           id="ubicaso"
           name="ubicaso"
           v-model="seguimiento.ubicacion_caso"
@@ -35,25 +35,27 @@
           <option value="fallecido">Fallecido</option>
           <option value="NA">N/A</option>
         </select>
-        <br />
-        <br />
         <label for="estado">
           Estado del paciente<FONT COLOR="red">*</FONT>:</label
-        ><br />
+        >
         <!-- select dropdown Estado Enfermedad-->
-        <select id="estado" name="estado" v-model="seguimiento.estado">
+        <select
+          class="form_creacion-input"
+          id="estado"
+          name="estado"
+          v-model="seguimiento.estado"
+        >
           <option value="leve">Leve</option>
           <option value="moderado">Moderado</option>
           <option value="grave">Grave</option>
           <option value="fallecido">Fallecido</option>
         </select>
-        <br />
-        <br />
         <label for="tipocontagio"
           >Tipo de contagio<FONT COLOR="red">*</FONT>:</label
-        ><br />
+        >
         <!-- select dropdown Tipo Contagio-->
         <select
+          class="form_creacion-input"
           id="tipocontagio"
           name="tipocontagio"
           v-model="seguimiento.tipo_contagio"
@@ -63,13 +65,12 @@
           <option value="comunitario">Comunitario</option>
           <option value="estudio">En estudio</option>
         </select>
-        <br />
-        <br />
         <label for="estadorecup"
           >Estado de Recuperación<FONT COLOR="red">*</FONT>:</label
-        ><br />
+        >
         <!-- select dropdown Estado Recuperado-->
         <select
+          class="form_creacion-input"
           id="estadorecup"
           name="estadorecup"
           v-model="seguimiento.recuperado"
@@ -79,23 +80,19 @@
           <option value="fallecido">Fallecido</option>
           <option value="NA">N/A</option>
         </select>
-        <br />
-        <br />
-        <label for="fmuerte">Fecha de Muerte (si no aplica dejar vacío):</label
-        ><br />
+        <label for="fmuerte">Fecha de Muerte (si no aplica dejar vacío):</label>
         <input
+          class="form_creacion-input"
           type="date"
           id="fmuerte"
           name="fmuerte"
           placeholder="DD/MM/AAAA"
           v-model="seguimiento.fecha_muerte"
-        /><br />
-        <br />
+        />
         <button type="submit">Modificar y Guardar</button>
-        <br />
       </form>
-    </div>
-  </div>
+    </section>
+  </section>
 </template>
 
 <script>
