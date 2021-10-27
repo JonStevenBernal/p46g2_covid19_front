@@ -20,15 +20,19 @@
 
     <div class="formulario">
       <form v-on:submit.prevent="procesarCreacionSeguimiento">
-        <label for="ubicaso">
-          Ubicación del caso<FONT COLOR="red">*</FONT>:</label
-        ><br />
         <!-- select dropdown Ubicacion actual caso -->
-        <select
-          id="ubicaso"
-          name="ubicaso"
-          v-model="seguimiento.ubicacion_caso"
-        >
+
+        <label for="crearsegumiento">Se creo el siguiente registro</label>
+        <select v-model="seguimiento.id_caso_fk">
+          <option
+            v-for="ultimo in seguimiento"
+            :key="ultimo.id_caso"
+            :value="ultimo.id_caso"
+            >{{ ultimo.id_caso }}</option
+          >
+        </select>
+
+        <select v-model="seguimiento.ubicacion_caso">
           <option value="casa">Casa</option>
           <option value="hospital">Hospital</option>
           <option value="uci">UCI</option>
@@ -41,7 +45,7 @@
           Estado del paciente<FONT COLOR="red">*</FONT>:</label
         ><br />
         <!-- select dropdown Estado Enfermedad-->
-        <select id="estado" name="estado" v-model="seguimiento.estado">
+        <select v-model="seguimiento.estado">
           <option value="leve">Leve</option>
           <option value="moderado">Moderado</option>
           <option value="grave">Grave</option>
@@ -53,11 +57,7 @@
           >Tipo de contagio<FONT COLOR="red">*</FONT>:</label
         ><br />
         <!-- select dropdown Tipo Contagio-->
-        <select
-          id="tipocontagio"
-          name="tipocontagio"
-          v-model="seguimiento.tipo_contagio"
-        >
+        <select v-model="seguimiento.tipo_contagio">
           <option value="relacionado">Relacionado</option>
           <option value="importado">Importado</option>
           <option value="comunitario">Comunitario</option>
@@ -69,11 +69,7 @@
           >Estado de Recuperación<FONT COLOR="red">*</FONT>:</label
         ><br />
         <!-- select dropdown Estado Recuperado-->
-        <select
-          id="estadorecup"
-          name="estadorecup"
-          v-model="seguimiento.recuperado"
-        >
+        <select v-model="seguimiento.recuperado">
           <option value="activo">Activo</option>
           <option value="recuperado">Recuperado</option>
           <option value="fallecido">Fallecido</option>
@@ -81,12 +77,9 @@
         </select>
         <br />
         <br />
-        <label for="fmuerte">Fecha de Muerte (si no aplica dejar vacío):</label
-        ><br />
+        <label>Fecha de Muerte (si no aplica dejar vacío):</label><br />
         <input
           type="date"
-          id="fmuerte"
-          name="fmuerte"
           placeholder="DD/MM/AAAA"
           v-model="seguimiento.fecha_muerte"
         /><br />
@@ -118,19 +111,6 @@ export default {
   },
 
   methods: {
-    getKeyRegistro: function() {
-      axios
-        .get("https://p46-g2-be-ultima.herokuapp.com/UltimoRegistro/")
-        .then((result) => {
-          this.id_caso_fk = result.data.id_caso;
-          console.log(result.data.id_caso);
-        })
-        .catch((error) => {
-          //usar???
-          //    if(error.response.status == "401")
-          alert("Error en el llamado");
-        });
-    },
     procesarCreacionSeguimiento: function() {
       console.log(this.seguimiento);
       axios
@@ -146,6 +126,19 @@ export default {
           //usar???
           //    if(error.response.status == "401")
           alert("Error en la creación");
+        });
+    },
+    getKeyRegistro: function() {
+      axios
+        .get("https://p46-g2-be-ultima.herokuapp.com/UltimoRegistro/")
+        .then((result) => {
+          this.seguimiento = result.data;
+          console.log(result.data);
+        })
+        .catch((error) => {
+          //usar???
+          //    if(error.response.status == "401")
+          alert("Error en el llamado");
         });
     },
   },
