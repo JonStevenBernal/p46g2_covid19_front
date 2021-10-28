@@ -38,12 +38,13 @@
             <th>Departamento</th>
             <th>Municipio</th>
 
-            <!-- cols seguimiento -->
-            <th>Ubicacion del paciente</th>
-            <th>Estado del paciente</th>
-            <th>Tipo de contagio</th>
-            <th>Recuperacion</th>
-            <th>Fecha de muerte</th>
+            <!--  <th>id_evolucion</th> -->
+            <th>ubicacion_caso</th>
+            <th>estado</th>
+            <th>tipo_contagio</th>
+            <th>recuperado</th>
+            <th>fecha_muerte</th>
+            <th>Modificar Seguimiento</th>
           </tr>
         </thead>
         <tbody class="table_body">
@@ -74,6 +75,11 @@
             <td>{{ register.seguimiento.tipo_contagio }}</td>
             <td>{{ register.seguimiento.recuperado }}</td>
             <td>{{ register.seguimiento.fecha_muerte }}</td>
+            <td>
+              <button v-on:click="llamar(register.id_caso)">
+                Modificar id:{{ register.id_caso }}
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -104,6 +110,15 @@ export default {
         .catch((error) => {
           alert("Error al mostrar registros");
         });
+    },
+
+    llamar: function(id) {
+      alert(
+        `En la siguiente ventana se modificará el seguimiento del registro número ${id}`
+      );
+      localStorage.clear();
+      localStorage.setItem("id", id);
+      this.$router.push({ name: "ModificarSeguimiento" });
     },
   },
   created: function() {
@@ -139,6 +154,7 @@ export default {
   text-align: center;
   padding: 20px 20px 20px;
 }
+
 .Values {
   background: #ffffff 0% 0% no-repeat padding-box;
 
@@ -146,6 +162,7 @@ export default {
   border-spacing: 0;
   text-align: center;
 }
+
 .Values:nth-child(odd) {
   background-color: #f2f2f2;
 }

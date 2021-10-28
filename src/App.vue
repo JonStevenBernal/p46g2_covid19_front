@@ -24,6 +24,7 @@ export default {
   methods: {
     //funciones js que voy a utilizar dentro del componente
     completedModificarSeguimiento: function() {
+      localStorage.clear();
       alert("Modificación de seguimiento exitosa");
       this.$router.push({ name: "Instrucciones" });
     },

@@ -8,12 +8,9 @@
       <p>
         <!-- Acá va el parrafo -->
         Estás modificando unicamente el registro al que le hiciste click en la
-        ventana anterior. Recuerda que sólamente es posible modificar los
-        siguientes campos:
-        <i
-          >Los campos marcados con <FONT COLOR="red">*</FONT> son
-          obligatorios</i
-        >
+        ventana anterior (Registro número {{this.seguimiento.id_caso_fk}}).<br> Recuerda que sólamente es posible modificar los
+        siguientes campos:<br><br>
+        <i>Los campos marcados con <FONT COLOR="red">*</FONT> son obligatorios</i>
       </p>
       <form
         class="creacion_container-form"
@@ -99,8 +96,8 @@
 //PUT
 import axios from "axios";
 
-let pk_seguimiento = 6; //pk del seguimiento que quiero modificar
-//let pk_registro = 1;                 //registro al que está asociado
+
+                //registro al que está asociado
 
 export default {
   name: "ModificarSeguimiento",
@@ -108,7 +105,7 @@ export default {
   data: function() {
     return {
       seguimiento: {
-        id_caso_fk: pk_seguimiento, //registro al que está asociado
+        id_caso_fk: 0, //registro al que está asociado
         ubicacion_caso: "",
         estado: "",
         tipo_contagio: "",
@@ -120,10 +117,9 @@ export default {
 
   methods: {
     procesarModificionSeguimiento: function() {
-      console.log();
       axios
         .put(
-          `https://p46-g2-be.herokuapp.com/ActualizarSeguimiento/${pk_seguimiento}/`, //pk del seguimiento que quiero modificar
+          `https://p46-g2-be-ultima.herokuapp.com/ActualizarSeguimiento/${this.seguimiento.id_caso_fk}/`, //pk del seguimiento que quiero modificar
           this.seguimiento,
           { headers: {} }
         )
@@ -136,6 +132,21 @@ export default {
           alert("Error en la modificación");
         });
     },
+    obtenerID: function() {
+      //let pk_seguimiento = localStorage.getItem("id"); //pk del seguimiento que quiero modificar
+      
+      //console.log(pk_seguimiento);
+      //console.log(typeof(pk_seguimiento));
+      //console.log(parseInt(pk_seguimiento));
+      //console.log(typeof(parseInt(pk_seguimiento)));
+
+      this.seguimiento.id_caso_fk = parseInt(localStorage.getItem("id"))
+      
+      console.log(this.seguimiento.id_caso_fk);
+    }
+  },
+  created: function() {
+    this.obtenerID();
   },
 };
 </script>

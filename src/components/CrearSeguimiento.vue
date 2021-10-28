@@ -7,11 +7,8 @@
       <p>
         <!-- Acá va el parrafo -->
         Estás creando el seguimiento asociado al registro de contagio creado en
-        la ventana anterior. Por favor diligencia el siguiente formulario:
-        <i
-          >Los campos marcados con <FONT COLOR="red">*</FONT> son
-          obligatorios</i
-        >
+        la ventana anterior. Por favor diligencia el siguiente formulario: <br> <br>
+        <i>Los campos marcados con <FONT COLOR="red">*</FONT> son obligatorios</i>
       </p>
 
       <form
@@ -110,7 +107,7 @@ export default {
       console.log(this.seguimiento);
       axios
         .post(
-          "https://p46-g2-be-final.herokuapp.com/CrearSeguimiento/",
+          "https://p46-g2-be-ultima.herokuapp.com/CrearSeguimiento/",
           this.seguimiento,
           {headers:{}}
         )
@@ -127,7 +124,6 @@ export default {
       axios
         .get("https://p46-g2-be-ultima.herokuapp.com/UltimoRegistro/")
         .then((result) => {
-          console.log(result.data[0].id_caso);
           this.seguimiento.id_caso_fk = result.data[0].id_caso;
         })
         .catch((error) => {
