@@ -112,7 +112,7 @@
 import axios from "axios";
 export default {
   name: "MostrarRegistros",
-  
+
   data() {
     return {
       registros: [],
@@ -171,22 +171,21 @@ export default {
       */
     };
   },
-  
-  methods:{
-    procesarMostrarRegistros: function(){
-      axios.get(
-        "https://p46-g2-be-ultima.herokuapp.com/MostrarRegistros/"
-      )
-      .then((result)=> {
-        this.registros = result.data;
-        
-        alert("Visualización de registros exitosa ");
-      })
-      .catch((error)=>{
-        alert("Error al mostrar registros");
-      });
-    }
-  }, 
+
+  methods: {
+    procesarMostrarRegistros: function() {
+      axios
+        .get("https://p46-g2-be-ultima.herokuapp.com/MostrarRegistros/")
+        .then((result) => {
+          this.registros = result.data;
+
+          // alert("Visualización de registros exitosa ");
+        })
+        .catch((error) => {
+          alert("Error al mostrar registros");
+        });
+    },
+  },
   created: function() {
     this.procesarMostrarRegistros();
   },
