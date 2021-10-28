@@ -37,12 +37,12 @@
         <li class="" v-on:click="loadFiltrarEstado">
           Filtrar Estado
         </li>
-        <li class="" v-on:click="loadCrearSeguimiento">
+        <!-- <li class="" v-on:click="loadCrearSeguimiento">
           Crear seguimiento
         </li>
         <li class="" v-on:click="loadModificarSeguimiento">
           ModificarSeguimiento
-        </li>
+        </li> -->
       </ul>
     </nav>
   </header>
