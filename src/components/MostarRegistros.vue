@@ -1,6 +1,6 @@
 <template>
   <section class="section_show-register">
-    <div>
+    <div class="description">
       <!-- Acá va el titulo -->
       <h1>Consultar Registro</h1>
       <!-- Acá va el parrafo -->
@@ -13,65 +13,45 @@
       </p>
     </div>
 
-    <!--sección Filtros -->
-    <!-- <div class="filtro">
-        <label for="filtrar">Filtrar por:</label><br>
-                    select dropdown Estado Recuperado -->
-    <!--sección Filtros 
-                    <select id="filtar" name="filtrar">
-                        <option value="municipio">Municipio</option>
-                        <option value="sexo">Sexo</option>
-                        <option value="estado">Estado</option>
-                    </select> 
-    </div>-->
-
     <!--sección TABLA -->
 
-    <div class="">
-      <h2 class="">Lista de Registros Covid19</h2>
-      <table class="">
-        <thead>
+    <div class="tabla">
+      <h2 class="titulo tabla">Lista de Registros Covid19</h2>
+      <table class="table">
+        <thead class="Heading">
           <tr>
             <!--sección COLUMNAS -->
-            <th>id_caso</th>
-            <!-- <th>codigo_divipola_municipio_fk</th> -->
-            <th>fecha_notificacion</th>
-            <th>fecha_reporte</th>
-            <th>fecha_sintomas</th>
-            <th>fecha_diagnostico_lab</th>
-            <th>edad</th>
-            <th>medida_edad</th>
-            <th>sexo</th>
-            <th>grupo_etnico</th>
-            <th>pertenencia_etnica</th>
-            <th>fecha_recuperacion</th>
-            <th>tipo_recuperacion</th>
+            <th>Id</th>
+            <th>Fecha de notificacion</th>
+            <th>Fecha de reporte</th>
+            <th>Fecha de sintomas</th>
+            <th>Fecha de diagnostico</th>
+            <th>Edad</th>
+            <th>Medida edad</th>
+            <th>Sexo</th>
+            <th>Grupo etnico</th>
+            <th>Pertenencia etnica</th>
+            <th>Fecha de recuperacion</th>
+            <th>Tipo recuperacion</th>
             <!--cols Registro -->
 
-            <!--cols Ubicacion -->
-            <!--<th>id</th>
-                        <th>codigoMunicipio</th>
-                        <th>codigo_iso_pais</th>
-                        <th>nombre_pais</th>
-                        <th>codigo_divipola_departamento</th> -->
-            <th>nombre_departamento</th>
-            <th>nombre_municipio</th>
+            <th>Departamento</th>
+            <th>Municipio</th>
 
-            <!--  <th>id_evolucion</th> -->
-            <th>ubicacion_caso</th>
-            <th>estado</th>
-            <th>tipo_contagio</th>
-            <th>recuperado</th>
-            <th>fecha_muerte</th>
+            <!-- cols seguimiento -->
+            <th>Ubicacion del paciente</th>
+            <th>Estado del paciente</th>
+            <th>Tipo de contagio</th>
+            <th>Recuperacion</th>
+            <th>Fecha de muerte</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="table_body">
           <!-- sección FILAS -->
 
-          <tr v-for="register in registros" :key="register.id">
+          <tr class="Values" v-for="register in registros" :key="register.id">
             <!--Fila 1, datos registro -->
             <td>{{ register.id_caso }}</td>
-            <!-- <td>{{register.codigo_divipola_municipio_fk}}</td> -->
             <td>{{ register.fecha_notificacion }}</td>
             <td>{{ register.fecha_reporte }}</td>
             <td>{{ register.fecha_sintomas }}</td>
@@ -85,17 +65,10 @@
             <td>{{ register.tipo_recuperacion }}</td>
 
             <!--Fila 1, datos ubicacion -->
-
-            <!-- <td>{{register.id}}</td> -->
-            <!--<td>{{register.codigoDivipolaMunicipio}}</td> -->
-            <!--<td>{{register.codigo_iso_pais}}</td>
-                        <td>{{register.nombre_pais}}</td>
-                        <td>{{register.codigo_divipola_departamento}}</td> -->
             <td>{{ register.ubicacion.nombre_departamento }}</td>
             <td>{{ register.ubicacion.nombre_municipio }}</td>
 
             <!--Fila 1, datos Seguimiento -->
-            <!-- <td>{{register.id_evolucion}}</td> -->
             <td>{{ register.seguimiento.ubicacion_caso }}</td>
             <td>{{ register.seguimiento.estado }}</td>
             <td>{{ register.seguimiento.tipo_contagio }}</td>
@@ -116,59 +89,6 @@ export default {
   data() {
     return {
       registros: [],
-      /*
-      registers: [
-        {
-          id_caso: 1,
-          fecha_notificacion: "2020-04-10",
-          fecha_reporte: "2020-04-10",
-          fecha_sintomas: "2020-04-10",
-          fecha_diagnostico_lab: "2020-04-10",
-          edad: 30,
-          unidad_de_medida_edad: 1,
-          sexo: "M",
-          grupo_etnico: "etnia",
-          pertenencia_etnica: 1,
-          fecha_recuperacion: "2020-04-10",
-          tipo_recuperacion: "niguna",
-
-          codigoDivipolaMunicipio: 91263,
-          nombre_departamento: "AMAZONAS",
-          nombre_municipio: "EL ENCANTO",
-
-          ubicacion_caso: "Bogota",
-          estado: "indefinido",
-          tipo_contagio: "indefinido",
-          recuperado: "indefinido",
-          fecha_muerte: null,
-        },
-
-        {
-          id_caso: 1,
-          fecha_notificacion: "2020-04-10",
-          fecha_reporte: "2020-04-10",
-          fecha_sintomas: "2020-04-10",
-          fecha_diagnostico_lab: "2020-04-10",
-          edad: 30,
-          unidad_de_medida_edad: 1,
-          sexo: "M",
-          grupo_etnico: "etnia",
-          pertenencia_etnica: 1,
-          fecha_recuperacion: "2020-04-10",
-          tipo_recuperacion: "niguna",
-
-          codigoDivipolaMunicipio: 91263,
-          nombre_departamento: "AMAZONAS",
-          nombre_municipio: "EL ENCANTO",
-
-          ubicacion_caso: "Bogota",
-          estado: "indefinido",
-          tipo_contagio: "indefinido",
-          recuperado: "indefinido",
-          fecha_muerte: null,
-        },
-      ],
-      */
     };
   },
 
@@ -179,7 +99,7 @@ export default {
         .then((result) => {
           this.registros = result.data;
 
-          // alert("Visualización de registros exitosa ");
+          alert("Visualización de registros exitosa ");
         })
         .catch((error) => {
           alert("Error al mostrar registros");
@@ -193,7 +113,40 @@ export default {
 </script>
 
 <style>
-.section_show-register {
+.tabla {
   overflow: scroll;
+  width: 90%;
+  margin: 0 auto;
+}
+.table {
+  overflow: scroll;
+  width: 1500px;
+  table-layout: fixed;
+
+  border-collapse: collapse;
+  border-spacing: 20px;
+  border-left: 1px solid;
+  border-right: 1px solid;
+  border-color: black;
+}
+.Heading {
+  /* UI Properties */
+  background: #72cade 0% 0% no-repeat padding-box;
+  border: 1px solid #929292;
+  border-radius: 12px 12px 0px 0px;
+
+  opacity: 1;
+  text-align: center;
+  padding: 20px 20px 20px;
+}
+.Values {
+  background: #ffffff 0% 0% no-repeat padding-box;
+
+  border-collapse: collapse;
+  border-spacing: 0;
+  text-align: center;
+}
+.Values:nth-child(odd) {
+  background-color: #f2f2f2;
 }
 </style>

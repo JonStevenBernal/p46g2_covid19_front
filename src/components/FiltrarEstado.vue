@@ -9,8 +9,8 @@
 
         <!-- <form action=""> -->
         <!-- onchange="procesarFiltrarEstado(this.value)" -->
-        <label for="crearsegumiento">Selecciona la Ubicacion</label>
-        <input v-model="this.estado" placeholder="edit me" />
+        <!-- <label for="crearsegumiento">Selecciona la Ubicacion</label>
+        <input v-model="this.estado" placeholder="edit me" /> -->
         <!-- <select class="form_creacion-input" v-model="grave">
           <option value="leve">Leve</option>
           <option value="moderado">Moderado</option>
@@ -19,6 +19,19 @@
         </select> -->
         <!-- <button type="submit">Filtrar Estado</button> -->
         <!-- </form> -->
+
+        <button v-on:click="procesarFiltrarEstado('grave')">
+          Filtrar Grave
+        </button>
+        <button v-on:click="procesarFiltrarEstado('leve')">
+          Filtrar Leve
+        </button>
+        <button v-on:click="procesarFiltrarEstado('fallecido')">
+          Filtrar Fallecido
+        </button>
+        <button v-on:click="procesarFiltrarEstado('moderado')">
+          Filtrar Moderado
+        </button>
 
         <table class="container-estado_table">
           <thead>

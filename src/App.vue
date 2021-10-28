@@ -36,7 +36,6 @@ export default {
       alert("Creación de registro exitosa ");
       this.$router.push({ name: "CrearSeguimiento" });
     },
-    
   },
 
   created: function() {
@@ -139,7 +138,8 @@ html {
 }
 .footer {
   width: 100%;
-  font-size: 1.8rem;
+  margin-top: 100px;
+  font-size: 1.6rem;
   color: var(--white-color);
   background-color: var(--primary-color);
 }
@@ -149,15 +149,15 @@ html {
 .section_footer {
   display: flex;
   align-items: center;
-  padding: 15px;
+  /* padding: 15px; */
   border-bottom: 0.1rem solid #131c20;
 }
 .section_footer-item h2 {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 1.6rem;
+  font-weight: 400;
 }
 .footer_section-names {
-  list-style: disc;
+  list-style: none;
 }
 .footer_section-names li {
   margin-left: 18px;
@@ -187,14 +187,13 @@ html {
   align-items: center;
   font-weight: 700;
   background-color: var(--secunda-color);
-  height: 100px;
+  height: 50px;
 }
 .footer_logo {
-  width: 100%;
   display: flex;
   justify-content: center;
   align-self: center;
-  padding: 30px 0;
+  padding: 5px 0;
 }
 .footer_logo-figure {
   width: 70px;
@@ -203,6 +202,9 @@ html {
   display: var(--d-flex);
   align-items: center;
   margin-left: 5px;
+}
+.footer_logo-title h3 {
+  font-size: 1.6rem;
 }
 @media (min-width: 1024px) {
   .nav {
@@ -226,12 +228,6 @@ html {
   }
   .footer_section-names {
     border: none;
-  }
-  .footer_logo-figure {
-    width: 100px;
-  }
-  .footer_logo-title h3 {
-    font-size: 3rem;
   }
 }
 </style>

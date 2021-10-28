@@ -82,13 +82,18 @@
         </select>
 
         <label>Nombre grupo étnico</label>
-        <input 
+        <input
           class="form_creacion-input"
           type="text"
-          placeholder="Ingrese el nombre del grupo étnico" v-model="registro.grupo_etnico"/>
+          placeholder="Ingrese el nombre del grupo étnico"
+          v-model="registro.grupo_etnico"
+        />
 
         <label>Pertenencia étnica</label>
-        <select class="form_creacion-input" v-model="registro.pertenencia_etnica">
+        <select
+          class="form_creacion-input"
+          v-model="registro.pertenencia_etnica"
+        >
           <option select disabled></option>
           <option :key="1" :value="1">Indigena</option>
           <option :key="2" :value="2">ROM</option>
@@ -228,6 +233,7 @@ export default {
   border: 1px solid var(--primary-color);
   border-radius: 5px;
   color: var(--black-letter);
+  background-color: transparent;
 }
 .creacion_container-form button {
   border: none;
