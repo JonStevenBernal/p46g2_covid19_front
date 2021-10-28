@@ -1,34 +1,23 @@
 <template>
-  <section class="filtros">
-    <section class="filtros_container">
-      <h3>Filtrar Sexo</h3>
-      <p>Aqui podras filtar por el sexo del paciente</p>
+  <section class="allregister">
+    <section class="allregister_container">
+      <div class="allregister_container-info">
+        <h2>Filtrar Sexo</h2>
+        <p>Aqui podras filtar por el sexo del paciente</p>
+      </div>
 
-      <div class="filtros_container-estado">
-        <h2>Lista del sexo del paciente</h2>
-
-        <!-- <form action=""> -->
-        <!-- onchange="procesarFiltrarEstado(this.value)" -->
-        <!-- <label for="crearsegumiento">Selecciona la Ubicacion</label>
-        <input v-model="this.estado" placeholder="edit me" /> -->
-        <!-- <select class="form_creacion-input" v-model="grave">
-          <option value="leve">Leve</option>
-          <option value="moderado">Moderado</option>
-          <option value="grave">Grave</option>
-          <option value="fallecido">Fallecido</option>
-        </select> -->
-        <!-- <button type="submit">Filtrar Estado</button> -->
-        <!-- </form> -->
-
+      <div class="allregister_container-buttons">
         <button v-on:click="procesarFiltrarSexo('F')">
           Filtrar por Femenino
         </button>
         <button v-on:click="procesarFiltrarSexo('M')">
           Filtrar por Masculino
         </button>
-
-        <table class="container-estado_table">
-          <thead class="Heading">
+      </div>
+      <h2>Lista del sexo del paciente</h2>
+      <div class="allregister_container-tabla">
+        <table class="container-tabla_table">
+          <thead class="tabla_table-heading">
             <tr>
               <!--sección COLUMNAS -->
               <th>Id</th>
@@ -56,10 +45,14 @@
               <th>Fecha de muerte</th>
             </tr>
           </thead>
-          <tbody class="table_body">
+          <tbody class="tabla_table-body">
             <!-- sección FILAS -->
 
-            <tr class="Values" v-for="register in registros" :key="register.id">
+            <tr
+              class="table_body-values"
+              v-for="register in registros"
+              :key="register.id"
+            >
               <!--Fila 1, datos registro -->
               <td>{{ register.id_caso }}</td>
               <td>{{ register.fecha_notificacion }}</td>

@@ -1,25 +1,12 @@
 <template>
-  <section class="filtros">
-    <section class="filtros_container">
-      <h3>Filtrar Estado</h3>
-      <p>Aqui podras filtar por el estado del paciente</p>
+  <section class="allregister">
+    <section class="allregister_container">
+      <div class="allregister_container-info">
+        <h2>Filtrar Estado</h2>
+        <p>Aqui podras filtar por el estado del paciente</p>
+      </div>
 
-      <div class="filtros_container-estado">
-        <h2>Lista de los estados del paciente</h2>
-
-        <!-- <form action=""> -->
-        <!-- onchange="procesarFiltrarEstado(this.value)" -->
-        <!-- <label for="crearsegumiento">Selecciona la Ubicacion</label>
-        <input v-model="this.estado" placeholder="edit me" /> -->
-        <!-- <select class="form_creacion-input" v-model="grave">
-          <option value="leve">Leve</option>
-          <option value="moderado">Moderado</option>
-          <option value="grave">Grave</option>
-          <option value="fallecido">Fallecido</option>
-        </select> -->
-        <!-- <button type="submit">Filtrar Estado</button> -->
-        <!-- </form> -->
-
+      <div class="allregister_container-buttons">
         <button v-on:click="procesarFiltrarEstado('grave')">
           Filtrar Grave
         </button>
@@ -32,9 +19,12 @@
         <button v-on:click="procesarFiltrarEstado('moderado')">
           Filtrar Moderado
         </button>
+      </div>
 
-        <table class="container-estado_table">
-          <thead>
+      <h2>Lista de los estados del paciente</h2>
+      <div class="allregister_container-tabla">
+        <table class="container-tabla_table">
+          <thead class="tabla_table-heading">
             <tr>
               <!--sección COLUMNAS -->
               <th>id_caso</th>
@@ -69,10 +59,14 @@
               <th>fecha_muerte</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="tabla_table-body">
             <!-- sección FILAS -->
 
-            <tr v-for="register in registros" :key="register.id">
+            <tr
+              class="table_body-values"
+              v-for="register in registros"
+              :key="register.id"
+            >
               <!--Fila 1, datos registro -->
               <td>{{ register.registro.id_caso }}</td>
               <!-- <td>{{register.codigo_divipola_municipio_fk}}</td> -->
@@ -88,13 +82,6 @@
               <td>{{ register.registro.fecha_recuperacion }}</td>
               <td>{{ register.registro.tipo_recuperacion }}</td>
 
-              <!--Fila 1, datos ubicacion -->
-
-              <!-- <td>{{register.id}}</td> -->
-              <!--<td>{{register.codigoDivipolaMunicipio}}</td> -->
-              <!--<td>{{register.codigo_iso_pais}}</td>
-                        <td>{{register.nombre_pais}}</td>
-                        <td>{{register.codigo_divipola_departamento}}</td> -->
               <td>{{ register.ubicacion.nombre_departamento }}</td>
               <td>{{ register.ubicacion.nombre_municipio }}</td>
 
@@ -161,4 +148,24 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.allregister_container-buttons {
+  width: 90%;
+  max-width: 1024px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 50px;
+}
+.allregister_container-buttons button {
+  background: #218dc9;
+  width: 90px;
+  height: 40px;
+  border: none;
+  color: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+</style>

@@ -136,6 +136,7 @@ html {
   width: 100%;
   /* height: 75vh; */
   background-color: var(--white-color);
+  padding: 40px 0;
 }
 .footer {
   width: 100%;

@@ -31,9 +31,9 @@
         <li class="" v-on:click="loadFiltrarSexo">
           Filtrar Sexo
         </li>
-        <li class="" v-on:click="loadFiltrarMunicipio">
+        <!-- <li class="" v-on:click="loadFiltrarMunicipio">
           Filtrar Municipio
-        </li>
+        </li> -->
         <li class="" v-on:click="loadFiltrarEstado">
           Filtrar Estado
         </li>
