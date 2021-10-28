@@ -5,6 +5,7 @@
       v-on:completedModificarSeguimiento="completedModificarSeguimiento"
       v-on:completedCrearSeguimiento="completedCrearSeguimiento"
       v-on:completedCrearRegistro="completedCrearRegistro"
+      
     >
     </router-view>
   </main>
@@ -24,6 +25,7 @@ export default {
   methods: {
     //funciones js que voy a utilizar dentro del componente
     completedModificarSeguimiento: function() {
+      localStorage.clear();
       alert("Modificación de seguimiento exitosa");
       this.$router.push({ name: "Instrucciones" });
     },
@@ -36,6 +38,7 @@ export default {
       alert("Creación de registro exitosa ");
       this.$router.push({ name: "CrearSeguimiento" });
     },
+    
     
   },
 

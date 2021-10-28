@@ -63,6 +63,7 @@
             <th>tipo_contagio</th>
             <th>recuperado</th>
             <th>fecha_muerte</th>
+            <th>Modificar Seguimiento</th>
           </tr>
         </thead>
         <tbody>
@@ -101,6 +102,7 @@
             <td>{{ register.seguimiento.tipo_contagio }}</td>
             <td>{{ register.seguimiento.recuperado }}</td>
             <td>{{ register.seguimiento.fecha_muerte }}</td>
+            <td><button v-on:click="llamar(register.id_caso)"> Modificar id:{{register.id_caso}} </button></td>
           </tr>
         </tbody>
       </table>
@@ -116,59 +118,6 @@ export default {
   data() {
     return {
       registros: [],
-      /*
-      registers: [
-        {
-          id_caso: 1,
-          fecha_notificacion: "2020-04-10",
-          fecha_reporte: "2020-04-10",
-          fecha_sintomas: "2020-04-10",
-          fecha_diagnostico_lab: "2020-04-10",
-          edad: 30,
-          unidad_de_medida_edad: 1,
-          sexo: "M",
-          grupo_etnico: "etnia",
-          pertenencia_etnica: 1,
-          fecha_recuperacion: "2020-04-10",
-          tipo_recuperacion: "niguna",
-
-          codigoDivipolaMunicipio: 91263,
-          nombre_departamento: "AMAZONAS",
-          nombre_municipio: "EL ENCANTO",
-
-          ubicacion_caso: "Bogota",
-          estado: "indefinido",
-          tipo_contagio: "indefinido",
-          recuperado: "indefinido",
-          fecha_muerte: null,
-        },
-
-        {
-          id_caso: 1,
-          fecha_notificacion: "2020-04-10",
-          fecha_reporte: "2020-04-10",
-          fecha_sintomas: "2020-04-10",
-          fecha_diagnostico_lab: "2020-04-10",
-          edad: 30,
-          unidad_de_medida_edad: 1,
-          sexo: "M",
-          grupo_etnico: "etnia",
-          pertenencia_etnica: 1,
-          fecha_recuperacion: "2020-04-10",
-          tipo_recuperacion: "niguna",
-
-          codigoDivipolaMunicipio: 91263,
-          nombre_departamento: "AMAZONAS",
-          nombre_municipio: "EL ENCANTO",
-
-          ubicacion_caso: "Bogota",
-          estado: "indefinido",
-          tipo_contagio: "indefinido",
-          recuperado: "indefinido",
-          fecha_muerte: null,
-        },
-      ],
-      */
     };
   },
   
@@ -185,6 +134,13 @@ export default {
       .catch((error)=>{
         alert("Error al mostrar registros");
       });
+    },
+
+    llamar: function (id) {
+      alert(`En la siguiente ventana se modificará el seguimiento del registro número ${id}`)
+      localStorage.clear();
+      localStorage.setItem('id', id);
+      this.$router.push({name: "ModificarSeguimiento"})
     }
   }, 
   created: function() {

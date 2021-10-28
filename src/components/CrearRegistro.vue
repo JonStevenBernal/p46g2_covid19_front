@@ -150,23 +150,21 @@ export default {
     procesarCrearRegistro: function() {
       console.log(this.registro);
       axios
-        .post("https://p46-g2-be.herokuapp.com/CrearRegistro/", this.registro, {
+        .post("https://p46-g2-be-ultima.herokuapp.com/CrearRegistro/", this.registro, {
           headers: {},
         })
         .then((result) => {
-          console.log("then");
           this.$emit("completedCrearRegistro");
         })
         .catch((error) => {
           //usar???
           //    if(error.response.status == "401")
-          console.log("Catch");
           alert("Error en la creación");
         });
     },
     listarUbicaciones: function() {
       axios
-        .get("https://p46-g2-be-final.herokuapp.com/ConsultarTodasUbicaciones/")
+        .get("https://p46-g2-be-ultima.herokuapp.com/ConsultarTodasUbicaciones/")
         .then((result) => {
           this.ubicaciones = result.data;
         })
