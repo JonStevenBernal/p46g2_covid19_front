@@ -26,22 +26,10 @@
               <th>Fecha de sintomas</th>
               <th>Fecha de diagnostico</th>
               <th>Edad</th>
-              
-              <td v-if="register.unidad_de_medida_edad == '1'">Años</td>
-              <td v-else-if="register.unidad_de_medida_edad == '3'">Dias</td>
-              <td v-else-if="register.unidad_de_medida_edad == '2'">Meses</td>
-              
-              <td v-if="register.sexo == 'M'">Masculino</td>
-              <td v-else-if="register.sexo == 'F'">Femenino</td>
-              
+              <th>Medida edad</th>                      
+              <th>Sexo</th>
               <th>Grupo etnico</th>
-              
-              <td v-if="register.pertenencia_etnica == '1'">Indigena</td>
-              <td v-if="register.pertenencia_etnica == '2'">ROM</td>
-              <td v-if="register.pertenencia_etnica == '3'">Raizal</td>
-              <td v-if="register.pertenencia_etnica == '4'">Palenquero</td>
-              <td v-if="register.pertenencia_etnica == '5'">Negro</td>
-              <td v-if="register.pertenencia_etnica == '6'">Otro</td>
+              <th>Pertenencia etnica</th>             
               
               <th>Fecha de recuperacion</th>
               <th>Tipo recuperacion</th>
@@ -74,9 +62,24 @@
               <td>{{ register.fecha_sintomas }}</td>
               <td>{{ register.fecha_diagnostico_lab }}</td>
               <td>{{ register.edad }}</td>
-              <td>{{ register.unidad_de_medida_edad }}</td>
-              <td>{{ register.sexo }}</td>
+
+              <td v-if="register.unidad_de_medida_edad == '1'">Años</td>
+              <td v-else-if="register.unidad_de_medida_edad == '3'">Dias</td>
+              <td v-else-if="register.unidad_de_medida_edad == '2'">Meses</td>
+              
+              <td v-if="register.sexo == 'M'">Masculino</td>
+              <td v-else-if="register.sexo == 'F'">Femenino</td>
+
+                            
               <td>{{ register.grupo_etnico }}</td>
+
+              <td v-if="register.pertenencia_etnica == '1'">Indigena</td>
+              <td v-if="register.pertenencia_etnica == '2'">ROM</td>
+              <td v-if="register.pertenencia_etnica == '3'">Raizal</td>
+              <td v-if="register.pertenencia_etnica == '4'">Palenquero</td>
+              <td v-if="register.pertenencia_etnica == '5'">Negro</td>
+              <td v-if="register.pertenencia_etnica == '6'">Otro</td>
+
               <td>{{ register.pertenencia_etnica }}</td>
               <td>{{ register.fecha_recuperacion }}</td>
               <td>{{ register.tipo_recuperacion }}</td>
