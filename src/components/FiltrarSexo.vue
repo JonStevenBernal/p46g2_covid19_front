@@ -26,10 +26,23 @@
               <th>Fecha de sintomas</th>
               <th>Fecha de diagnostico</th>
               <th>Edad</th>
-              <th>Medida edad</th>
-              <th>Sexo</th>
+              
+              <td v-if="register.unidad_de_medida_edad == '1'">Años</td>
+              <td v-else-if="register.unidad_de_medida_edad == '3'">Dias</td>
+              <td v-else-if="register.unidad_de_medida_edad == '2'">Meses</td>
+              
+              <td v-if="register.sexo == 'M'">Masculino</td>
+              <td v-else-if="register.sexo == 'F'">Femenino</td>
+              
               <th>Grupo etnico</th>
-              <th>Pertenencia etnica</th>
+              
+              <td v-if="register.pertenencia_etnica == '1'">Indigena</td>
+              <td v-if="register.pertenencia_etnica == '2'">ROM</td>
+              <td v-if="register.pertenencia_etnica == '3'">Raizal</td>
+              <td v-if="register.pertenencia_etnica == '4'">Palenquero</td>
+              <td v-if="register.pertenencia_etnica == '5'">Negro</td>
+              <td v-if="register.pertenencia_etnica == '6'">Otro</td>
+              
               <th>Fecha de recuperacion</th>
               <th>Tipo recuperacion</th>
               <!--cols Registro -->

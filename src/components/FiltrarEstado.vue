@@ -76,10 +76,23 @@
               <td>{{ register.registro.fecha_sintomas }}</td>
               <td>{{ register.registro.fecha_diagnostico_lab }}</td>
               <td>{{ register.registro.edad }}</td>
-              <td>{{ register.registro.unidad_de_medida_edad }}</td>
-              <td>{{ register.registro.sexo }}</td>
+              
+              <td v-if="register.unidad_de_medida_edad == '1'">Años</td>
+              <td v-else-if="register.unidad_de_medida_edad == '3'">Dias</td>
+              <td v-else-if="register.unidad_de_medida_edad == '2'">Meses</td>
+              
+              <td v-if="register.sexo == 'M'">Masculino</td>
+              <td v-else-if="register.sexo == 'F'">Femenino</td>
+              
               <td>{{ register.registro.grupo_etnico }}</td>
-              <td>{{ register.registro.pertenencia_etnica }}</td>
+              
+              <td v-if="register.pertenencia_etnica == '1'">Indigena</td>
+              <td v-if="register.pertenencia_etnica == '2'">ROM</td>
+              <td v-if="register.pertenencia_etnica == '3'">Raizal</td>
+              <td v-if="register.pertenencia_etnica == '4'">Palenquero</td>
+              <td v-if="register.pertenencia_etnica == '5'">Negro</td>
+              <td v-if="register.pertenencia_etnica == '6'">Otro</td>
+              
               <td>{{ register.registro.fecha_recuperacion }}</td>
               <td>{{ register.registro.tipo_recuperacion }}</td>
 
