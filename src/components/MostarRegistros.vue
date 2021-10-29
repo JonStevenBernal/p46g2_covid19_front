@@ -6,8 +6,8 @@
         <h2>Consultar Todos los Registros</h2>
         <!-- Acá va el parrafo -->
         <p>
-          Aqui esta visualizando todos los registros de contagios. Puedes
-          modificar el estado del paciente en la ultima fila.
+          Aqui estás visualizando todos los registros de contagios. Puedes
+          modificar el estado del paciente con los botones de la última columna.
           <!--   <br>Recuerde que para modificar un registro debe seleccionarlo. -->
         </p>
       </div>

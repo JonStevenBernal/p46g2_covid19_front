@@ -57,6 +57,7 @@
               <th>tipo_contagio</th>
               <th>recuperado</th>
               <th>fecha_muerte</th>
+              <th>Modificar Seguimiento</th>
             </tr>
           </thead>
           <tbody class="tabla_table-body">
@@ -92,6 +93,11 @@
               <td>{{ register.tipo_contagio }}</td>
               <td>{{ register.recuperado }}</td>
               <td>{{ register.fecha_muerte }}</td>
+              <td>
+                <button v-on:click="llamar(register.registro.id_caso)">
+                  Modificar id:{{ register.registro.id_caso }}
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -112,35 +118,27 @@ export default {
   },
 
   methods: {
-    // procesarMostrarRegistros: function() {
-    //   axios
-    //     .get("https://p46-g2-be-ultima.herokuapp.com/FiltrarEstado/")
-    //     .then((result) => {
-    //       this.registros = result.data;
-    //       alert("Visualización de registros exitosa ");
-    //     })
-    //     .catch((error) => {
-    //       alert("Error al mostrar registros");
-    //     });
-    // },
     procesarFiltrarEstado: function(estado) {
       console.log(estado);
       axios
         .get(`https://p46-g2-be-ultima.herokuapp.com/FiltrarEstado/${estado}/`)
         .then((result) => {
-          console.log(result.data);
+          
           this.registros = result.data;
         })
         .catch((error) => {
-          //usar???
-          //    if(error.response.status == "401")
           alert("Error en el llamado");
         });
     },
-
-    // elegirEstado: function() {
-    //   let estado =
-    // }
+    llamar: function(id) {
+          alert(
+            `En la siguiente ventana se modificará el seguimiento del registro número ${id}`
+          );
+          localStorage.clear();
+          localStorage.setItem("id", id);
+          this.$router.push({ name: "ModificarSeguimiento" });
+    },
+    
   },
   created: function() {
     this.procesarFiltrarEstado();

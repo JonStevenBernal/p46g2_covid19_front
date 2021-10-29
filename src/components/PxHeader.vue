@@ -31,12 +31,16 @@
         <li class="" v-on:click="loadFiltrarSexo">
           Filtrar Sexo
         </li>
-        <!-- <li class="" v-on:click="loadFiltrarMunicipio">
-          Filtrar Municipio
-        </li> -->
         <li class="" v-on:click="loadFiltrarEstado">
           Filtrar Estado
         </li>
+        <li class="" v-on:click="loadIniciarSesión">
+          Iniciar Sesión
+        </li>
+        <li class="" v-on:click="loadCerrarSesión">
+          Cerrar Sesión
+        </li>
+        
         <!-- <li class="" v-on:click="loadCrearSeguimiento">
           Crear seguimiento
         </li>
@@ -77,8 +81,12 @@ export default {
       this.$router.push({ name: "FiltrarSexo" });
     },
 
-    loadFiltrarMunicipio: function() {
-      this.$router.push({ name: "FiltrarMunicipio" });
+    loadIniciarSesion: function() {
+      this.$router.push({ name: "IniciarSesion" });
+    },
+
+    loadCerrarSesion: function() {
+      this.$router.push({ name: "CerrarSesion" });
     },
 
     loadFiltrarEstado: function() {

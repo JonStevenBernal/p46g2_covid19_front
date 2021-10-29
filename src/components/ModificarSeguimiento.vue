@@ -87,6 +87,7 @@
           v-model="seguimiento.fecha_muerte"
         />
         <button type="submit">Modificar y Guardar</button>
+        <button v-on:click="cancelar()">Cancelar</button>
       </form>
     </section>
   </section>
@@ -133,17 +134,16 @@ export default {
         });
     },
     obtenerID: function() {
-      //let pk_seguimiento = localStorage.getItem("id"); //pk del seguimiento que quiero modificar
-      
-      //console.log(pk_seguimiento);
-      //console.log(typeof(pk_seguimiento));
-      //console.log(parseInt(pk_seguimiento));
-      //console.log(typeof(parseInt(pk_seguimiento)));
-
       this.seguimiento.id_caso_fk = parseInt(localStorage.getItem("id"))
       
       console.log(this.seguimiento.id_caso_fk);
-    }
+    },
+
+    cancelar: function() {
+      localStorage.clear();
+      alert("Modificación cancelada");
+      this.$router.push({ name: "Instrucciones" });
+    },
   },
   created: function() {
     this.obtenerID();

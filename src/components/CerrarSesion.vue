@@ -4,14 +4,7 @@
     <div class="section_main-home">
       <h2>¡Bienvenido a Coronactual!</h2>
       <p>
-        En este sitio web se puede encontrar informacion acerca del actual brote
-        de enfermedad por coronavirus (COVID-19) en el departamento del Atlántico.
-        El usuario de esta página es la Secretaría de Salud de dicho departamento. <br> <br>
-        
-        Este aplicativo permite agregar, consultar y filtar registros de contagio.
-        Cada uno de los registros tiene un seguimiento, el cual se puede modificar
-        seleccionándolo dentro de los servicios de mostrar y de filtrar.<br>
-        Para acceder a estos servicios, por favor autentíquese. 
+        CERRAR SESION 
       </p>
     </div>
   </section>
