@@ -1,57 +1,71 @@
 <template>
-  <section class="section_main">
-    <div class="section_main-image"></div>
-    <div class="section_main-home">
+  <section class="creacion">
+    <section class="creacion_container">
+      <img src="../assets/icons8-virus-pur.svg" alt="logo coronactual" />
+
       <h2>¡Bienvenido a Coronactual!</h2>
       <p>
-        Por favor inicie sesión para acceder a los serivicios. <br>
-        Si no tiene una cuenta puede crear una haciendo click en el botón respectivo <br>
+        Por favor inicie sesión para acceder a los serivicios. <br />
+        Si no tiene una cuenta puede crear una haciendo click en el botón
+        respectivo <br />
       </p>
-      <form v-on:submit.prevent="procesarIniciarSesion">
-                <input type="text" v-model="user.username" placeholder="Nombre de usuario">
-                <br>
-                <input type="password" v-model="user.password" placeholder="Contraseña">
-                <br>
-                <button type="submit">Iniciar Sesion</button>
+      <form
+        class="creacion_container-form"
+        v-on:submit.prevent="procesarIniciarSesion"
+      >
+        <input
+          class="form_creacion-input"
+          type="text"
+          v-model="user.username"
+          placeholder="Nombre de usuario"
+        />
+        <br />
+        <input
+          class="form_creacion-input"
+          type="password"
+          v-model="user.password"
+          placeholder="Contraseña"
+        />
+        <br />
+        <button type="submit">Iniciar Sesion</button>
       </form>
-    </div>
+    </section>
   </section>
 </template>
 
 <script>
-    import axios from 'axios';
-    export default {
-        name: "IniciarSesion",
-        
-        data: function(){
-            return {
-                user: {
-                    username:"",
-                    password:""
-                }
-            }
-        },
+import axios from "axios";
+export default {
+  name: "IniciarSesion",
 
-        methods: {
-            procesarIniciarSesion: function(){
-                axios.post(
-                    "https://p46-g2-be-ultima2.herokuapp.com/Login/",
-                    this.user,
-                    {headers: {}}
-                )
-                .then((result) => {
-                    localStorage.setItem('isAuth', true);
-                    localStorage.setItem('usuario', this.user.username);
-                    console.log(this.user.username);
-                    this.$emit('completedLogIn')
-                })
-                .catch((error) => {
-                    if (error.response.status == "401")
-                        alert("ERROR 401: Credenciales Incorrectas.");
-                });
-            }
-        }
-    }
+  data: function() {
+    return {
+      user: {
+        username: "",
+        password: "",
+      },
+    };
+  },
+
+  methods: {
+    procesarIniciarSesion: function() {
+      axios
+        .post("https://p46-g2-be-ultima2.herokuapp.com/Login/", this.user, {
+          headers: {},
+        })
+        .then((result) => {
+          localStorage.setItem("isAuth", true);
+          localStorage.setItem("usuario", this.user.username);
+          console.log(this.user.username);
+          this.$emit("completedLogIn");
+        })
+        .catch((error) => {
+          if (error.response.status == "401")
+            alert("ERROR 401: Credenciales Incorrectas.");
+        });
+    },
+  },
+};
 </script>
 
 <style>

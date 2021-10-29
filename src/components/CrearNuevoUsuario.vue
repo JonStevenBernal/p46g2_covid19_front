@@ -4,13 +4,27 @@
       <img src="../assets/icons8-virus-pur.svg" alt="logo coronactual" />
       <h2>Crear una nueva cuenta de usuario</h2>
       <p>
-        Para crear un nueva cuenta, por favor ingrese un nombre de usuario y contraseña:
+        Para crear un nueva cuenta, por favor ingrese un nombre de usuario y
+        contraseña:
       </p>
-      <form class="creacion_container-form" v-on:submit.prevent="procesarCrearNuevoUsuario">
-        <input type="text" v-model="nuevoUsuario.username" placeholder="Nombre de Usuario">
-                
-        <input type="password" v-model="nuevoUsuario.password" placeholder="Contraseña">
-                
+      <form
+        class="creacion_container-form"
+        v-on:submit.prevent="procesarCrearNuevoUsuario"
+      >
+        <input
+          class="form_creacion-input"
+          type="text"
+          v-model="nuevoUsuario.username"
+          placeholder="Nombre de Usuario"
+        />
+
+        <input
+          class="form_creacion-input"
+          type="password"
+          v-model="nuevoUsuario.password"
+          placeholder="Contraseña"
+        />
+
         <button type="submit">Crear nueva cuenta de usuario</button>
       </form>
     </section>
@@ -24,37 +38,33 @@ export default {
   data: function() {
     return {
       nuevoUsuario: {
-                      
         username: "",
         password: "",
-        
       },
-      
     };
   },
 
   methods: {
     procesarCrearNuevoUsuario: function() {
       console.log(this.nuevoUsuario);
-      
+
       axios
-        .post("https://p46-g2-be-ultima2.herokuapp.com/CrearUsuario/", this.nuevoUsuario, {
-          headers: {},
-        })
+        .post(
+          "https://p46-g2-be-ultima2.herokuapp.com/CrearUsuario/",
+          this.nuevoUsuario,
+          {
+            headers: {},
+          }
+        )
         .then((result) => {
           this.$emit("completedCrearNuevoUsuario");
-          
         })
         .catch((error) => {
-          
           alert("Error en la creación de una nueva cuenta");
         });
     },
-    
   },
-  created: function() {
-    
-  },
+  created: function() {},
 };
 </script>
 
