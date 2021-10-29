@@ -5,19 +5,42 @@
       <h2>¡Bienvenido a Coronactual!</h2>
       <p>
         En este sitio web se puede encontrar informacion acerca del actual brote
-        de enfermedad por coronavirus (COVID-19) que fue notificado por primera
-        vez en Wuhan (China) el 31 de diciembre de 2019. En esta página hay
-        información sobre el brote en (Colombia), en este sitio web puede
-        agregar un registro, consultar un registro, filtar un registro y
-        modificar registros, cada registro tiene un seguimiento, tambien se
-        puede modificar y consultar un seguimiento.
+        de enfermedad por coronavirus (COVID-19) en el departamento del Atlántico.
+        El usuario de esta página es la Secretaría de Salud de dicho departamento. <br> <br>
+        
+        Este aplicativo permite agregar, consultar y filtar registros de contagio.
+        Cada uno de los registros tiene un seguimiento, el cual se puede modificar
+        seleccionándolo dentro de los servicios de mostrar y de filtrar.<br>
       </p>
+        <p v-if="!isAuth"> Para acceder a estos servicios, por favor inicie sesión o cree una nueva cuenta.</p> 
+      
     </div>
   </section>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "Instrucciones",
+  data: function() {
+    return {
+        isAuth: false,
+      }
+  },
+  methods: {
+    verificarAutenticacion: function(){
+      
+      if(localStorage.getItem("isAuth") == "true"){
+        this.isAuth = true;
+      }
+      else{
+        this.isAuth = false;
+      }
+    }
+  },
+  created: function() {
+    this.verificarAutenticacion();
+  },
+};
 </script>
 
 <style>
@@ -56,4 +79,5 @@ export default {};
   font-size: 1.6rem;
   color: var(--black-letter);
 }
+
 </style>

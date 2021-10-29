@@ -1,10 +1,70 @@
 <template>
-  <px-header />
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+  </head>
+  <header class="header ">
+    <div class="header_section">
+      <div class="header_section-item" v-on:click="loadInicio">
+        <figure class="item_figure">
+          <img src="./assets/icons8-virus-pur.svg" alt="logo Coronavirus" />
+        </figure>
+        <div class="item_title">
+          <h1 class="">CoronActual <br />Te salva la vida</h1>
+        </div>
+      </div>
+      <figure class="header_section_buton" v-on:click="toggleShowNav">
+        <img class="" src="./assets/icons8-menu_rounded.svg" alt="Menu" />
+      </figure>
+    </div>
+    <nav class="nav animate__animated animate__fadeInDown" v-show="showNav">
+      <ul class="nav_section">
+        <li class="" v-on:click="loadInicio">Inicio</li>
+        <li v-if="isAuth" class="" v-on:click="loadMostrar">
+          Mostrar Registros
+        </li>
+        <li v-if="isAuth" class="" v-on:click="loadCrearRegistro">
+          Crear Registro
+        </li>
+        <li v-if="isAuth" class="" v-on:click="loadFiltrarSexo">
+          Filtrar Sexo
+        </li>
+        <li v-if="isAuth" class="" v-on:click="loadFiltrarEstado">
+          Filtrar Estado
+        </li>
+        <li v-if="!isAuth" class="" v-on:click="loadIniciarSesion">
+          Iniciar Sesión
+        </li>
+        <li v-if="isAuth" class="" v-on:click="loadCerrarSesion">
+          Cerrar Sesión
+        </li>
+        <li v-if="isAuth" class="" v-on:click="loadEliminarCuenta">
+          Eliminar cuenta
+        </li>
+        <li v-if="!isAuth" class="" v-on:click="loadCrearNuevoUsuario">
+          Crear nueva cuenta
+        </li>
+
+        <!-- <li class="" v-on:click="loadCrearSeguimiento">
+          Crear seguimiento
+        </li>
+        <li class="" v-on:click="loadModificarSeguimiento">
+          ModificarSeguimiento
+        </li> -->
+      </ul>
+    </nav>
+  </header>
   <main class="main-component">
     <router-view
       v-on:completedModificarSeguimiento="completedModificarSeguimiento"
       v-on:completedCrearSeguimiento="completedCrearSeguimiento"
       v-on:completedCrearRegistro="completedCrearRegistro"
+      v-on:completedLogIn="completedLogIn"
+      v-on:completedCrearNuevoUsuario="completedCrearNuevoUsuario"
+      v-on:completedCerrarSesion="completedCerrarSesion"
+      v-on:completedEliminarUsuario="completedEliminarUsuario"
     >
     </router-view>
   </main>
@@ -12,18 +72,83 @@
 </template>
 
 <script>
-import PxHeader from "./components/PxHeader.vue";
+//import PxHeader from "./components/PxHeader.vue";
 import PxFooter from "./components/PxFooter.vue";
 export default {
   name: "App",
-  components: { PxHeader, PxFooter },
+  components: { PxFooter },
   data: function() {
     //inicializar variables dentro de este componente
+    return {
+      showNav: false,
+      isAuth: false,
+    };
   },
 
   methods: {
     //funciones js que voy a utilizar dentro del componente
+    toggleShowNav: function() {
+      if (this.showNav == true) this.showNav = false;
+      else this.showNav = true;
+    },
+    verificarAutenticacion: function() {
+      console.log(localStorage.getItem("isAuth"));
+      if (localStorage.getItem("isAuth") == "true") {
+        this.isAuth = true;
+        console.log("true");
+        console.log(this.isAuth);
+      } else {
+        this.isAuth = false;
+        console.log("false");
+        console.log(this.isAuth);
+      }
+    },
+    loadInicio: function() {
+      this.$router.push({ name: "Instrucciones" });
+    },
+
+    loadMostrar: function() {
+      this.$router.push({ name: "MostrarRegistros" });
+    },
+
+    loadCrearRegistro: function() {
+      this.$router.push({ name: "CrearRegistro" });
+    },
+
+    loadFiltrarSexo: function() {
+      this.$router.push({ name: "FiltrarSexo" });
+    },
+
+    loadIniciarSesion: function() {
+      this.$router.push({ name: "IniciarSesion" });
+    },
+
+    loadCerrarSesion: function() {
+      this.$router.push({ name: "CerrarSesion" });
+    },
+
+    loadEliminarCuenta: function() {
+      this.$router.push({ name: "EliminarCuenta" });
+    },
+
+    loadCrearNuevoUsuario: function() {
+      this.$router.push({ name: "CrearNuevoUsuario" });
+    },
+
+    loadFiltrarEstado: function() {
+      this.$router.push({ name: "FiltrarEstado" });
+    },
+
+    loadModificarSeguimiento: function() {
+      this.$router.push({ name: "ModificarSeguimiento" });
+    },
+
+    loadCrearSeguimiento: function() {
+      this.$router.push({ name: "CrearSeguimiento" });
+    },
+
     completedModificarSeguimiento: function() {
+      localStorage.removeItem("id");
       alert("Modificación de seguimiento exitosa");
       this.$router.push({ name: "Instrucciones" });
     },
@@ -36,7 +161,28 @@ export default {
       alert("Creación de registro exitosa ");
       this.$router.push({ name: "CrearSeguimiento" });
     },
-    
+    completedLogIn: function() {
+      alert("Autenticación exitosa");
+      this.$router.push({ name: "Instrucciones" });
+      this.verificarAutenticacion();
+    },
+
+    completedCrearNuevoUsuario: function() {
+      alert("Creación de cuenta exitosa. Por favor inicie sesión");
+      this.$router.push({ name: "IniciarSesion" });
+    },
+
+    completedCerrarSesion: function() {
+      alert("Sesión cerrada correctamente");
+      this.$router.push({ name: "Instrucciones" });
+      this.verificarAutenticacion();
+    },
+
+    completedEliminarUsuario: function() {
+      alert("Usuario eliminado correctamente. Sesión cerrada");
+      this.$router.push({ name: "Instrucciones" });
+      this.verificarAutenticacion();
+    },
   },
 
   created: function() {
@@ -135,11 +281,14 @@ html {
 .main-component {
   width: 100%;
   /* height: 75vh; */
+  min-height: calc(100vh - 130px - 300px);
   background-color: var(--white-color);
+  padding: 40px 0;
 }
 .footer {
   width: 100%;
-  font-size: 1.8rem;
+  margin-top: 100px;
+  font-size: 1.6rem;
   color: var(--white-color);
   background-color: var(--primary-color);
 }
@@ -149,15 +298,15 @@ html {
 .section_footer {
   display: flex;
   align-items: center;
-  padding: 15px;
+  /* padding: 15px; */
   border-bottom: 0.1rem solid #131c20;
 }
 .section_footer-item h2 {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 1.6rem;
+  font-weight: 400;
 }
 .footer_section-names {
-  list-style: disc;
+  list-style: none;
 }
 .footer_section-names li {
   margin-left: 18px;
@@ -187,14 +336,13 @@ html {
   align-items: center;
   font-weight: 700;
   background-color: var(--secunda-color);
-  height: 100px;
+  height: 50px;
 }
 .footer_logo {
-  width: 100%;
   display: flex;
   justify-content: center;
   align-self: center;
-  padding: 30px 0;
+  padding: 5px 0;
 }
 .footer_logo-figure {
   width: 70px;
@@ -203,6 +351,9 @@ html {
   display: var(--d-flex);
   align-items: center;
   margin-left: 5px;
+}
+.footer_logo-title h3 {
+  font-size: 1.6rem;
 }
 @media (min-width: 1024px) {
   .nav {
@@ -226,12 +377,6 @@ html {
   }
   .footer_section-names {
     border: none;
-  }
-  .footer_logo-figure {
-    width: 100px;
-  }
-  .footer_logo-title h3 {
-    font-size: 3rem;
   }
 }
 </style>

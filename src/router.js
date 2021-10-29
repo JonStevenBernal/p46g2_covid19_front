@@ -6,9 +6,12 @@ import SeleccionarUbicacion from "./components/SeleccionarUbicacion.vue";
 import CrearRegistro from "./components/CrearRegistro.vue";
 import CrearSeguimiento from "./components/CrearSeguimiento.vue";
 import FiltrarSexo from "./components/FiltrarSexo.vue";
-import FiltrarMunicipio from "./components/FiltrarMunicipio.vue";
 import FiltrarEstado from "./components/FiltrarEstado.vue";
 import ModificarSeguimiento from "./components/ModificarSeguimiento.vue";
+import IniciarSesion from "./components/IniciarSesion.vue";
+import CerrarSesion from "./components/CerrarSesion.vue";
+import CrearNuevoUsuario from "./components/CrearNuevoUsuario.vue";
+import EliminarCuenta from "./components/EliminarCuenta.vue";
 
 const routes = [
   {
@@ -21,6 +24,30 @@ const routes = [
     path: "/Instrucciones",
     name: "Instrucciones",
     component: Instrucciones,
+  },
+
+  {
+    path: "/Usuario/IniciarSesion",
+    name: "IniciarSesion",
+    component: IniciarSesion,
+  },
+
+  {
+    path: "/Usuario/CerrarSesion",
+    name: "CerrarSesion",
+    component: CerrarSesion,
+  },
+
+  {
+    path: "/Usuario/CrearNuevoUsuario",
+    name: "CrearNuevoUsuario",
+    component: CrearNuevoUsuario,
+  },
+
+  {
+    path: "/Usuario/EliminarCuenta",
+    name: "EliminarCuenta",
+    component: EliminarCuenta,
   },
 
   {
@@ -47,11 +74,6 @@ const routes = [
     path: "/filtrar/sexo",
     name: "FiltrarSexo",
     component: FiltrarSexo,
-  },
-  {
-    path: "/filtrar/municipio",
-    name: "FiltrarMunicipio",
-    component: FiltrarMunicipio,
   },
   {
     path: "/filtrar/estado",

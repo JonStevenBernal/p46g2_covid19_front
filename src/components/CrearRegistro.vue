@@ -10,7 +10,7 @@
         class="creacion_container-form"
         v-on:submit.prevent="procesarCrearRegistro"
       >
-        <label for="crearsegumiento">Selecciona la Ubicacion</label>
+        <label for="crearsegumiento">Selecciona el municipio en el departamento de Atlántico</label>
         <select
           class="form_creacion-input"
           v-model="registro.codigo_divipola_municipio_fk"
@@ -82,13 +82,18 @@
         </select>
 
         <label>Nombre grupo étnico</label>
-        <input 
+        <input
           class="form_creacion-input"
           type="text"
-          placeholder="Ingrese el nombre del grupo étnico" v-model="registro.grupo_etnico"/>
+          placeholder="Ingrese el nombre del grupo étnico"
+          v-model="registro.grupo_etnico"
+        />
 
         <label>Pertenencia étnica</label>
-        <select class="form_creacion-input" v-model="registro.pertenencia_etnica">
+        <select
+          class="form_creacion-input"
+          v-model="registro.pertenencia_etnica"
+        >
           <option select disabled></option>
           <option :key="1" :value="1">Indigena</option>
           <option :key="2" :value="2">ROM</option>
@@ -150,29 +155,23 @@ export default {
     procesarCrearRegistro: function() {
       console.log(this.registro);
       axios
-        .post("https://p46-g2-be.herokuapp.com/CrearRegistro/", this.registro, {
+        .post("https://p46-g2-be-ultima2.herokuapp.com/CrearRegistro/", this.registro, {
           headers: {},
         })
         .then((result) => {
-          console.log("then");
           this.$emit("completedCrearRegistro");
         })
         .catch((error) => {
-          //usar???
-          //    if(error.response.status == "401")
-          console.log("Catch");
           alert("Error en la creación");
         });
     },
     listarUbicaciones: function() {
       axios
-        .get("https://p46-g2-be-final.herokuapp.com/ConsultarTodasUbicaciones/")
+        .get("https://p46-g2-be-ultima2.herokuapp.com/ConsultarTodasUbicaciones/")
         .then((result) => {
           this.ubicaciones = result.data;
         })
         .catch((error) => {
-          //usar???
-          //    if(error.response.status == "401")
           alert("Error en Ubicaciones");
         });
     },
@@ -228,6 +227,7 @@ export default {
   border: 1px solid var(--primary-color);
   border-radius: 5px;
   color: var(--black-letter);
+  background-color: transparent;
 }
 .creacion_container-form button {
   border: none;
