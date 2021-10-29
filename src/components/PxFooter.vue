@@ -8,7 +8,7 @@
             alt="Logo universidad nacional"
           />
           <h2 class="">
-            Universidad Naciaonal de Colombia <br />Proyecto Mision Tic:
+            Universidad Nacional de Colombia <br />Proyecto Mision Tic:
             Coronactual
           </h2>
         </div>
