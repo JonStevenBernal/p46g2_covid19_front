@@ -11,14 +11,35 @@
         Este aplicativo permite agregar, consultar y filtar registros de contagio.
         Cada uno de los registros tiene un seguimiento, el cual se puede modificar
         seleccionándolo dentro de los servicios de mostrar y de filtrar.<br> <br>
-        Para acceder a estos servicios, por favor inicie sesión o cree una nueva cuenta. 
+        <p v-if="!isAuth"> Para acceder a estos servicios, por favor inicie sesión o cree una nueva cuenta.</p> 
       </p>
     </div>
   </section>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "Instrucciones",
+  data: function() {
+    return {
+        isAuth: false,
+      }
+  },
+  methods: {
+    verificarAutenticacion: function(){
+      
+      if(localStorage.getItem("isAuth") == "true"){
+        this.isAuth = true;
+      }
+      else{
+        this.isAuth = false;
+      }
+    }
+  },
+  created: function() {
+    this.verificarAutenticacion();
+  },
+};
 </script>
 
 <style>
