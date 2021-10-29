@@ -17,8 +17,7 @@
         v-on:submit.prevent="procesarModificionSeguimiento"
       >
         <label for="ubicaso">
-          Ubicación del caso<FONT COLOR="red">*</FONT>:</label
-        >
+          Ubicación del caso<FONT COLOR="red">*</FONT>:</label>
         <!-- select dropdown Ubicacion actual caso -->
         <select
           class="form_creacion-input"
@@ -33,8 +32,7 @@
           <option value="NA">N/A</option>
         </select>
         <label for="estado">
-          Estado del paciente<FONT COLOR="red">*</FONT>:</label
-        >
+          Estado del paciente<FONT COLOR="red">*</FONT>:</label>
         <!-- select dropdown Estado Enfermedad-->
         <select
           class="form_creacion-input"
@@ -48,8 +46,7 @@
           <option value="fallecido">Fallecido</option>
         </select>
         <label for="tipocontagio"
-          >Tipo de contagio<FONT COLOR="red">*</FONT>:</label
-        >
+          >Tipo de contagio<FONT COLOR="red">*</FONT>:</label>
         <!-- select dropdown Tipo Contagio-->
         <select
           class="form_creacion-input"
@@ -63,8 +60,7 @@
           <option value="estudio">En estudio</option>
         </select>
         <label for="estadorecup"
-          >Estado de Recuperación<FONT COLOR="red">*</FONT>:</label
-        >
+          >Estado de Recuperación<FONT COLOR="red">*</FONT>:</label>
         <!-- select dropdown Estado Recuperado-->
         <select
           class="form_creacion-input"
