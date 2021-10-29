@@ -28,7 +28,7 @@
           <option :key="20" :value="20">20_</option>
         </select>
         -->
-        <label for="crearsegumiento">Ubicacion del seguimiento</label>
+        <label for="crearsegumiento">Ubicacion del seguimiento<FONT COLOR="red">*</FONT>:</label>
         <select
           class="form_creacion-input"
           v-model="seguimiento.ubicacion_caso"
@@ -39,9 +39,7 @@
           <option value="fallecido">Fallecido</option>
           <option value="NA">N/A</option>
         </select>
-        <label for="estado">
-          Estado del paciente<FONT COLOR="red">*</FONT>:</label
-        >
+        <label for="estado">Estado del paciente<FONT COLOR="red">*</FONT>:</label>
         <!-- select dropdown Estado Enfermedad-->
         <select class="form_creacion-input" v-model="seguimiento.estado">
           <option value="leve">Leve</option>
@@ -50,8 +48,7 @@
           <option value="fallecido">Fallecido</option>
         </select>
         <label for="tipocontagio"
-          >Tipo de contagio<FONT COLOR="red">*</FONT>:</label
-        >
+          >Tipo de contagio<FONT COLOR="red">*</FONT>:</label>
         <!-- select dropdown Tipo Contagio-->
         <select class="form_creacion-input" v-model="seguimiento.tipo_contagio">
           <option value="relacionado">Relacionado</option>
@@ -61,8 +58,7 @@
         </select>
 
         <label for="estadorecup"
-          >Estado de Recuperación<FONT COLOR="red">*</FONT>:</label
-        >
+          >Estado de Recuperación<FONT COLOR="red">*</FONT>:</label>
         <!-- select dropdown Estado Recuperado-->
         <select class="form_creacion-input" v-model="seguimiento.recuperado">
           <option value="activo">Activo</option>
