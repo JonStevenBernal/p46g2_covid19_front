@@ -79,4 +79,5 @@ export default {
   font-size: 1.6rem;
   color: var(--black-letter);
 }
+
 </style>
