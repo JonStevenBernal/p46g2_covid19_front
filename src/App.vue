@@ -46,7 +46,7 @@
         <li v-if="!isAuth" class="" v-on:click="loadCrearNuevoUsuario">
           Crear nueva cuenta
         </li>
-        
+
         <!-- <li class="" v-on:click="loadCrearSeguimiento">
           Crear seguimiento
         </li>
@@ -65,7 +65,6 @@
       v-on:completedCrearNuevoUsuario="completedCrearNuevoUsuario"
       v-on:completedCerrarSesion="completedCerrarSesion"
       v-on:completedEliminarUsuario="completedEliminarUsuario"
-      
     >
     </router-view>
   </main>
@@ -81,9 +80,9 @@ export default {
   data: function() {
     //inicializar variables dentro de este componente
     return {
-        showNav: false,
-        isAuth: false,
-      }
+      showNav: false,
+      isAuth: false,
+    };
   },
 
   methods: {
@@ -92,14 +91,13 @@ export default {
       if (this.showNav == true) this.showNav = false;
       else this.showNav = true;
     },
-    verificarAutenticacion: function(){
+    verificarAutenticacion: function() {
       console.log(localStorage.getItem("isAuth"));
-      if(localStorage.getItem("isAuth") == "true"){
+      if (localStorage.getItem("isAuth") == "true") {
         this.isAuth = true;
         console.log("true");
         console.log(this.isAuth);
-      }
-      else{
+      } else {
         this.isAuth = false;
         console.log("false");
         console.log(this.isAuth);
@@ -172,7 +170,6 @@ export default {
     completedCrearNuevoUsuario: function() {
       alert("Creación de cuenta exitosa. Por favor inicie sesión");
       this.$router.push({ name: "IniciarSesion" });
-      
     },
 
     completedCerrarSesion: function() {
@@ -186,12 +183,10 @@ export default {
       this.$router.push({ name: "Instrucciones" });
       this.verificarAutenticacion();
     },
-    
   },
 
   created: function() {
     //función que se ejecuta al crear el componente
-    
   },
 };
 </script>
@@ -286,6 +281,7 @@ html {
 .main-component {
   width: 100%;
   /* height: 75vh; */
+  min-height: calc(100vh - 130px - 300px);
   background-color: var(--white-color);
   padding: 40px 0;
 }
