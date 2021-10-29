@@ -10,8 +10,8 @@
         
         Este aplicativo permite agregar, consultar y filtar registros de contagio.
         Cada uno de los registros tiene un seguimiento, el cual se puede modificar
-        seleccionándolo dentro de los servicios de mostrar y de filtrar.<br>
-        Para acceder a estos servicios, por favor autentíquese. 
+        seleccionándolo dentro de los servicios de mostrar y de filtrar.<br> <br>
+        Para acceder a estos servicios, por favor inicie sesión o cree una nueva cuenta. 
       </p>
     </div>
   </section>

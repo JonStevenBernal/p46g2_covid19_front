@@ -120,7 +120,7 @@ export default {
     procesarModificionSeguimiento: function() {
       axios
         .put(
-          `https://p46-g2-be-ultima.herokuapp.com/ActualizarSeguimiento/${this.seguimiento.id_caso_fk}/`, //pk del seguimiento que quiero modificar
+          `https://p46-g2-be-ultima2.herokuapp.com/ActualizarSeguimiento/${this.seguimiento.id_caso_fk}/`, //pk del seguimiento que quiero modificar
           this.seguimiento,
           { headers: {} }
         )

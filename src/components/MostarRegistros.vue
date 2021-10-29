@@ -105,7 +105,7 @@ export default {
   methods: {
     procesarMostrarRegistros: function() {
       axios
-        .get("https://p46-g2-be-ultima.herokuapp.com/MostrarRegistros/")
+        .get("https://p46-g2-be-ultima2.herokuapp.com/MostrarRegistros/")
         .then((result) => {
           this.registros = result.data;
 
@@ -120,7 +120,7 @@ export default {
       alert(
         `En la siguiente ventana se modificará el seguimiento del registro número ${id}`
       );
-      localStorage.clear();
+      localStorage.removeItem("id");
       localStorage.setItem("id", id);
       this.$router.push({ name: "ModificarSeguimiento" });
     },

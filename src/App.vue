@@ -1,10 +1,71 @@
 <template>
-  <px-header />
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+  </head>
+  <header class="header ">
+    <div class="header_section">
+      <div class="header_section-item" v-on:click="loadInicio">
+        <figure class="item_figure">
+          <img src="./assets/icons8-virus-pur.svg" alt="logo Coronavirus" />
+        </figure>
+        <div class="item_title">
+          <h1 class="">CoronActual <br />Te salva la vida</h1>
+        </div>
+      </div>
+      <figure class="header_section_buton" v-on:click="toggleShowNav">
+        <img class="" src="./assets/icons8-menu_rounded.svg" alt="Menu" />
+      </figure>
+    </div>
+    <nav class="nav animate__animated animate__fadeInDown" v-show="showNav">
+      <ul class="nav_section">
+        <li class="" v-on:click="loadInicio">Inicio</li>
+        <li v-if="isAuth" class="" v-on:click="loadMostrar">
+          Mostrar Registros
+        </li>
+        <li v-if="isAuth" class="" v-on:click="loadCrearRegistro">
+          Crear Registro
+        </li>
+        <li v-if="isAuth" class="" v-on:click="loadFiltrarSexo">
+          Filtrar Sexo
+        </li>
+        <li v-if="isAuth" class="" v-on:click="loadFiltrarEstado">
+          Filtrar Estado
+        </li>
+        <li v-if="!isAuth" class="" v-on:click="loadIniciarSesion">
+          Iniciar Sesión
+        </li>
+        <li v-if="isAuth" class="" v-on:click="loadCerrarSesion">
+          Cerrar Sesión
+        </li>
+        <li v-if="isAuth" class="" v-on:click="loadEliminarCuenta">
+          Eliminar cuenta
+        </li>
+        <li v-if="!isAuth" class="" v-on:click="loadCrearNuevoUsuario">
+          Crear nueva cuenta
+        </li>
+        
+        <!-- <li class="" v-on:click="loadCrearSeguimiento">
+          Crear seguimiento
+        </li>
+        <li class="" v-on:click="loadModificarSeguimiento">
+          ModificarSeguimiento
+        </li> -->
+      </ul>
+    </nav>
+  </header>
   <main class="main-component">
     <router-view
       v-on:completedModificarSeguimiento="completedModificarSeguimiento"
       v-on:completedCrearSeguimiento="completedCrearSeguimiento"
       v-on:completedCrearRegistro="completedCrearRegistro"
+      v-on:completedLogIn="completedLogIn"
+      v-on:completedCrearNuevoUsuario="completedCrearNuevoUsuario"
+      v-on:completedCerrarSesion="completedCerrarSesion"
+      v-on:completedEliminarUsuario="completedEliminarUsuario"
+      
     >
     </router-view>
   </main>
@@ -12,19 +73,84 @@
 </template>
 
 <script>
-import PxHeader from "./components/PxHeader.vue";
+//import PxHeader from "./components/PxHeader.vue";
 import PxFooter from "./components/PxFooter.vue";
 export default {
   name: "App",
-  components: { PxHeader, PxFooter },
+  components: { PxFooter },
   data: function() {
     //inicializar variables dentro de este componente
+    return {
+        showNav: false,
+        isAuth: false,
+      }
   },
 
   methods: {
     //funciones js que voy a utilizar dentro del componente
+    toggleShowNav: function() {
+      if (this.showNav == true) this.showNav = false;
+      else this.showNav = true;
+    },
+    verificarAutenticacion: function(){
+      console.log(localStorage.getItem("isAuth"));
+      if(localStorage.getItem("isAuth") == "true"){
+        this.isAuth = true;
+        console.log("true");
+        console.log(this.isAuth);
+      }
+      else{
+        this.isAuth = false;
+        console.log("false");
+        console.log(this.isAuth);
+      }
+    },
+    loadInicio: function() {
+      this.$router.push({ name: "Instrucciones" });
+    },
+
+    loadMostrar: function() {
+      this.$router.push({ name: "MostrarRegistros" });
+    },
+
+    loadCrearRegistro: function() {
+      this.$router.push({ name: "CrearRegistro" });
+    },
+
+    loadFiltrarSexo: function() {
+      this.$router.push({ name: "FiltrarSexo" });
+    },
+
+    loadIniciarSesion: function() {
+      this.$router.push({ name: "IniciarSesion" });
+    },
+
+    loadCerrarSesion: function() {
+      this.$router.push({ name: "CerrarSesion" });
+    },
+
+    loadEliminarCuenta: function() {
+      this.$router.push({ name: "EliminarCuenta" });
+    },
+
+    loadCrearNuevoUsuario: function() {
+      this.$router.push({ name: "CrearNuevoUsuario" });
+    },
+
+    loadFiltrarEstado: function() {
+      this.$router.push({ name: "FiltrarEstado" });
+    },
+
+    loadModificarSeguimiento: function() {
+      this.$router.push({ name: "ModificarSeguimiento" });
+    },
+
+    loadCrearSeguimiento: function() {
+      this.$router.push({ name: "CrearSeguimiento" });
+    },
+
     completedModificarSeguimiento: function() {
-      localStorage.clear();
+      localStorage.removeItem("id");
       alert("Modificación de seguimiento exitosa");
       this.$router.push({ name: "Instrucciones" });
     },
@@ -37,10 +163,35 @@ export default {
       alert("Creación de registro exitosa ");
       this.$router.push({ name: "CrearSeguimiento" });
     },
+    completedLogIn: function() {
+      alert("Autenticación exitosa");
+      this.$router.push({ name: "Instrucciones" });
+      this.verificarAutenticacion();
+    },
+
+    completedCrearNuevoUsuario: function() {
+      alert("Creación de cuenta exitosa. Por favor inicie sesión");
+      this.$router.push({ name: "IniciarSesion" });
+      
+    },
+
+    completedCerrarSesion: function() {
+      alert("Sesión cerrada correctamente");
+      this.$router.push({ name: "Instrucciones" });
+      this.verificarAutenticacion();
+    },
+
+    completedEliminarUsuario: function() {
+      alert("Usuario eliminado correctamente. Sesión cerrada");
+      this.$router.push({ name: "Instrucciones" });
+      this.verificarAutenticacion();
+    },
+    
   },
 
   created: function() {
     //función que se ejecuta al crear el componente
+    
   },
 };
 </script>

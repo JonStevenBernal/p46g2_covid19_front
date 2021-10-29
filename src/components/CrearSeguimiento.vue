@@ -92,7 +92,7 @@ export default {
   data: function() {
     return {
       seguimiento: {
-        id_caso_fk: 0, //modificar (llamar de parte donde hice clic???)
+        id_caso_fk: 0, 
         ubicacion_caso: "",
         estado: "",
         tipo_contagio: "",
@@ -107,28 +107,24 @@ export default {
       console.log(this.seguimiento);
       axios
         .post(
-          "https://p46-g2-be-ultima.herokuapp.com/CrearSeguimiento/",
+          "https://p46-g2-be-ultima2.herokuapp.com/CrearSeguimiento/",
           this.seguimiento,
           {headers:{}}
         )
         .then((result) => {
-          this.$emit("completedCrearSeguimiento"); //nos puede servir después
+          this.$emit("completedCrearSeguimiento");
         })
         .catch((error) => {
-          //usar???
-          //    if(error.response.status == "401")
           alert("Error en la creación");
         });
     },
     getKeyRegistro: function() {
       axios
-        .get("https://p46-g2-be-ultima.herokuapp.com/UltimoRegistro/")
+        .get("https://p46-g2-be-ultima2.herokuapp.com/UltimoRegistro/")
         .then((result) => {
           this.seguimiento.id_caso_fk = result.data[0].id_caso;
         })
         .catch((error) => {
-          //usar???
-          //    if(error.response.status == "401")
           alert("Error en el llamado");
         });
     },
@@ -140,50 +136,5 @@ export default {
 </script>
 
 <style>
-/* .CrearSeguimiento {
-  height: 100%;
-  width: 100%;
 
-  justify-content: center;
-  align-items: center;
-}
-
-.titulo {
-  text-align: center;
-}
-
-.titulo h1 {
-  color: rgb(18, 50, 119);
-  font-size: 60px;
-}
-
-.titulo p {
-  text-align: center;
-  font-size: 20px;
-}
-
-.formulario {
-  border: 3px solid #364b63;
-  border-radius: 10px;
-  width: 30%;
-  height: 45%;
-  margin: auto;
-  padding: 30px 20px;
-  align-items: center;
-  text-align: center;
-}
-
-.formulario button {
-  color: #e5e7e9;
-  background: #364b63;
-  border: 1px solid #e5e7e9;
-  border-radius: 5px;
-  padding: 10px 20px;
-}
-
-.formulario button:hover {
-  color: #364b63;
-  background: #e5e7e9;
-  border: 1px solid #364b63;
-} */
 </style>

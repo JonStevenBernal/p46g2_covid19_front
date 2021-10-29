@@ -2,16 +2,35 @@
   <section class="section_main">
     <div class="section_main-image"></div>
     <div class="section_main-home">
-      <h2>¡Bienvenido a Coronactual!</h2>
+      <h2>Cerrar Sesión</h2>
       <p>
-        CERRAR SESION 
+        ¿Estás seguro que quieres cerrar sesión?:
       </p>
+      <form class="creacion_container-form" v-on:submit.prevent="procesarCerrarSesion">        
+        <button type="submit">Sí, cerrar sesión</button>
+        <button v-on:click="cancelar()">No, volver al inicio</button>
+      </form>
     </div>
   </section>
 </template>
 
 <script>
-export default {};
+export default {
+  name: 'CerrarSesion',
+
+    methods:{
+      procesarCerrarSesion: function(){
+        localStorage.setItem('isAuth', false);
+        localStorage.removeItem("usuario");
+        this.$emit('completedCerrarSesion')
+      },
+
+      cancelar: function(){
+        
+        this.$router.push({ name: "Instrucciones" });
+      },
+    },
+};
 </script>
 
 <style>

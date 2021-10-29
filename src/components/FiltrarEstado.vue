@@ -121,7 +121,7 @@ export default {
     procesarFiltrarEstado: function(estado) {
       console.log(estado);
       axios
-        .get(`https://p46-g2-be-ultima.herokuapp.com/FiltrarEstado/${estado}/`)
+        .get(`https://p46-g2-be-ultima2.herokuapp.com/FiltrarEstado/${estado}/`)
         .then((result) => {
           
           this.registros = result.data;
@@ -134,7 +134,7 @@ export default {
           alert(
             `En la siguiente ventana se modificará el seguimiento del registro número ${id}`
           );
-          localStorage.clear();
+          localStorage.removeItem("id");
           localStorage.setItem("id", id);
           this.$router.push({ name: "ModificarSeguimiento" });
     },

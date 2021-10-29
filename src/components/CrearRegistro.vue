@@ -10,7 +10,7 @@
         class="creacion_container-form"
         v-on:submit.prevent="procesarCrearRegistro"
       >
-        <label for="crearsegumiento">Selecciona la Ubicacion</label>
+        <label for="crearsegumiento">Selecciona el municipio en el departamento de Atlántico</label>
         <select
           class="form_creacion-input"
           v-model="registro.codigo_divipola_municipio_fk"
@@ -155,27 +155,23 @@ export default {
     procesarCrearRegistro: function() {
       console.log(this.registro);
       axios
-        .post("https://p46-g2-be-ultima.herokuapp.com/CrearRegistro/", this.registro, {
+        .post("https://p46-g2-be-ultima2.herokuapp.com/CrearRegistro/", this.registro, {
           headers: {},
         })
         .then((result) => {
           this.$emit("completedCrearRegistro");
         })
         .catch((error) => {
-          //usar???
-          //    if(error.response.status == "401")
           alert("Error en la creación");
         });
     },
     listarUbicaciones: function() {
       axios
-        .get("https://p46-g2-be-ultima.herokuapp.com/ConsultarTodasUbicaciones/")
+        .get("https://p46-g2-be-ultima2.herokuapp.com/ConsultarTodasUbicaciones/")
         .then((result) => {
           this.ubicaciones = result.data;
         })
         .catch((error) => {
-          //usar???
-          //    if(error.response.status == "401")
           alert("Error en Ubicaciones");
         });
     },

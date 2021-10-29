@@ -22,23 +22,29 @@
     <nav class="nav animate__animated animate__fadeInDown" v-show="showNav">
       <ul class="nav_section">
         <li class="" v-on:click="loadInicio">Inicio</li>
-        <li class="" v-on:click="loadMostrar">
+        <li v-if="isAuth" class="" v-on:click="loadMostrar">
           Mostrar Registros
         </li>
-        <li class="" v-on:click="loadCrearRegistro">
+        <li v-if="isAuth" class="" v-on:click="loadCrearRegistro">
           Crear Registro
         </li>
-        <li class="" v-on:click="loadFiltrarSexo">
+        <li v-if="isAuth" class="" v-on:click="loadFiltrarSexo">
           Filtrar Sexo
         </li>
-        <li class="" v-on:click="loadFiltrarEstado">
+        <li v-if="isAuth" class="" v-on:click="loadFiltrarEstado">
           Filtrar Estado
         </li>
-        <li class="" v-on:click="loadIniciarSesión">
+        <li v-if="!isAuth" class="" v-on:click="loadIniciarSesion">
           Iniciar Sesión
         </li>
-        <li class="" v-on:click="loadCerrarSesión">
+        <li v-if="isAuth" class="" v-on:click="loadCerrarSesion">
           Cerrar Sesión
+        </li>
+        <li v-if="isAuth" class="" v-on:click="loadEliminarCuenta">
+          Eliminar cuenta
+        </li>
+        <li v-if="!isAuth" class="" v-on:click="loadCrearNuevoUsuario">
+          Crear nueva cuenta
         </li>
         
         <!-- <li class="" v-on:click="loadCrearSeguimiento">
@@ -58,12 +64,21 @@ export default {
     //inicializar variables dentro de este componente
     return {
       showNav: false,
+      isAuth: false,
     };
   },
   methods: {
     toggleShowNav: function() {
       if (this.showNav == true) this.showNav = false;
       else this.showNav = true;
+    },
+    verificarAutenticacion: function(){
+      if(localStorage.getItem("isAuth") == true){
+        this.isAuth = true;
+      }
+      else{
+        this.isAuth = false;
+      }
     },
     loadInicio: function() {
       this.$router.push({ name: "Instrucciones" });
@@ -89,6 +104,14 @@ export default {
       this.$router.push({ name: "CerrarSesion" });
     },
 
+    loadEliminarCuenta: function() {
+      this.$router.push({ name: "EliminarCuenta" });
+    },
+
+    loadCrearNuevoUsuario: function() {
+      this.$router.push({ name: "CrearNuevoUsuario" });
+    },
+
     loadFiltrarEstado: function() {
       this.$router.push({ name: "FiltrarEstado" });
     },
@@ -101,6 +124,9 @@ export default {
       this.$router.push({ name: "CrearSeguimiento" });
     },
   },
+  created: function(){
+      this.verificarAutenticacion();
+    }
 };
 </script>
 <style></style>
